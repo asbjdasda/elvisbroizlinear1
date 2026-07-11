@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+
+subject="$(git log -1 --pretty=%s)"
+COMMIT_SUBJECT="$subject" powershell.exe -NoProfile -ExecutionPolicy Bypass -File "scripts/commit-major-change-hook.ps1"

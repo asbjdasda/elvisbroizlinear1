@@ -1,0 +1,22 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "elvisbroizlinear-video-gateway",
+  "main": "./video-gateway.js",
+  "compatibility_date": "2026-07-10",
+  "workers_dev": false,
+  "routes": [
+    {
+      "pattern": "video.elvisbroizlinear.com/*",
+      "zone_name": "elvisbroizlinear.com"
+    }
+  ],
+  "vars": {
+    "ALLOWED_ORIGINS": "https://elvisbroizlinear.com,https://www.elvisbroizlinear.com"
+  },
+  "r2_buckets": [
+    {
+      "binding": "VIDEOS",
+      "bucket_name": "elvisbroizlinear"
+    }
+  ]
+}
