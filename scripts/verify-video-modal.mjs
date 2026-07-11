@@ -1,5 +1,8 @@
 ﻿import assert from 'node:assert/strict'
 import { spawn } from 'node:child_process'
+import { mkdtemp, rm } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import { setTimeout as delay } from 'node:timers/promises'
 import { fileURLToPath } from 'node:url'
 
@@ -42,14 +45,18 @@ async function ensureSiteServer() {
   throw new Error('Timed out waiting for the Vite test server')
 }
 
-function launchChrome() {
+function launchChrome(profilePath) {
   return spawn(chromePath, [
     '--headless=new',
+    '--no-sandbox',
+    '--disable-dev-shm-usage',
     '--disable-gpu',
     '--disable-extensions',
     '--no-first-run',
     '--mute-audio',
     '--autoplay-policy=no-user-gesture-required',
+    `--user-data-dir=${profilePath}`,
+    '--remote-allow-origins=*',
     `--remote-debugging-port=${port}`,
     'about:blank',
   ], {
@@ -159,7 +166,8 @@ async function waitFor(client, expression, timeoutMs = 25000) {
 }
 
 const siteServer = await ensureSiteServer()
-const chrome = launchChrome()
+const chromeProfile = await mkdtemp(join(tmpdir(), 'brozien-video-modal-'))
+const chrome = launchChrome(chromeProfile)
 
 try {
   await fetchJson(`http://127.0.0.1:${port}/json/version`)
@@ -268,11 +276,17 @@ try {
   await waitFor(client, "document.querySelector('.video-player__progress')?.classList.contains('is-previewing')")
   await waitFor(client, "document.querySelector('.video-player__time-tip')?.textContent === '01:29'")
 
-  await client.evaluate("document.querySelector('[aria-label=\"More video actions\"]').click()")
+  await client.evaluate(`(() => {
+    const video = document.querySelector('.video-player video')
+    window.__commentsPauseCalls = 0
+    video.pause = () => { window.__commentsPauseCalls += 1 }
+    document.querySelector('[aria-label="More video actions"]').click()
+  })()`)
   await waitFor(client, "Boolean(document.querySelector('.video-player__menu'))")
 
   await client.evaluate("Array.from(document.querySelectorAll('.video-player__menu button')).find((button) => button.textContent.includes('Comments')).click()")
   await waitFor(client, "Boolean(document.querySelector('.video-popover--comments'))")
+  assert.equal(await client.evaluate('window.__commentsPauseCalls'), 1)
 
   const commentsState = await client.evaluate(`(() => ({
     hasEpsExpandIcon: document.querySelector('.video-comments__expand-preview img')?.src.includes('/assets/ui/comments-expand.svg'),
@@ -281,6 +295,7 @@ try {
     visitorsPinnedRight: Boolean(document.querySelector('.video-comments__head b')),
     collapsedListHidden: document.querySelector('.video-comments__list')?.hidden === true,
     articleCount: document.querySelectorAll('.video-comments__list article').length,
+    compactHeight: document.querySelector('.video-popover--comments').getBoundingClientRect().height <= 180,
     sendButtonHasFlyIcon: Boolean(document.querySelector('.video-comments__form button .video-comments__send-icon')),
     bottomWidePanel: (() => {
       const panel = document.querySelector('.video-modal__panel')
@@ -304,7 +319,8 @@ try {
     secondSeed: true,
     visitorsPinnedRight: true,
     collapsedListHidden: true,
-    articleCount: 2,
+    articleCount: 0,
+    compactHeight: true,
     sendButtonHasFlyIcon: true,
     bottomWidePanel: true,
   })
@@ -381,4 +397,5 @@ try {
 } finally {
   chrome.kill()
   siteServer?.kill()
+  await rm(chromeProfile, { recursive: true, force: true }).catch(() => {})
 }

@@ -183,26 +183,6 @@
   place-items: center;
 }
 
-.video-player__volume-slider {
-  position: absolute;
-  bottom: 48px;
-  left: 50%;
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 154px;
-  padding: 12px 0;
-  border: 1px solid rgba(255, 248, 231, 0.12);
-  border-radius: 999px;
-  background: rgba(5, 5, 6, 0.82);
-  opacity: 0;
-  pointer-events: none;
-  transform: translateX(-50%) translateY(8px);
-  transition:
-    opacity 160ms ease,
-    transform 160ms ease;
-}
-
 .video-player__volume:hover .video-player__volume-slider,
 .video-player__volume:focus-within .video-player__volume-slider {
   opacity: 1;
@@ -594,15 +574,6 @@
 
 .video-player__button--primary:active {
   transform: scale(0.92) !important;
-}
-
-.video-player__volume-slider {
-  bottom: 52px !important;
-  width: 48px !important;
-  height: 168px !important;
-  border-radius: 999px !important;
-  background: rgba(3, 3, 4, 0.58) !important;
-  backdrop-filter: blur(10px);
 }
 
 .video-player__volume-slider input {
@@ -1023,8 +994,12 @@
 }
 
 .video-player__volume-slider {
+  position: absolute !important;
   left: 50% !important;
   bottom: 48px !important;
+  z-index: 8 !important;
+  display: grid !important;
+  place-items: center !important;
   width: 28px !important;
   height: 154px !important;
   padding: 0 !important;
@@ -1033,7 +1008,10 @@
   background: transparent !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
+  opacity: 0;
+  pointer-events: none;
   transform: translateX(-50%) translateY(8px) !important;
+  transition: opacity 160ms ease, transform 160ms ease;
 }
 
 .video-player__volume:hover .video-player__volume-slider,
@@ -1169,9 +1147,10 @@
   left: 15px !important;
   width: auto !important;
   max-width: none !important;
-  height: min(318px, 40vh) !important;
+  height: auto !important;
+  max-height: 180px !important;
   display: grid !important;
-  grid-template-rows: auto auto minmax(0, 1fr) !important;
+  grid-template-rows: auto auto auto !important;
   gap: 10px !important;
   padding: 12px !important;
   overflow: hidden !important;
@@ -1184,21 +1163,42 @@
   transform: none !important;
 }
 
+.video-popover--comments:not(.is-expanded) {
+  height: auto !important;
+  max-height: 180px !important;
+}
+
+.video-popover--comments.is-expanded {
+  height: min(318px, 40vh) !important;
+  max-height: min(318px, 40vh) !important;
+  grid-template-rows: auto auto auto minmax(0, 1fr) !important;
+}
+
 .video-modal__panel--portrait:not(.is-fullscreen) .video-popover--comments {
   right: 15px !important;
   bottom: 56px !important;
   left: 15px !important;
-  height: min(322px, 40vh) !important;
+  height: auto !important;
   transform: none !important;
+}
+
+.video-modal__panel--portrait:not(.is-fullscreen) .video-popover--comments.is-expanded {
+  height: min(322px, 40vh) !important;
+  max-height: min(322px, 40vh) !important;
 }
 
 .video-modal__panel.is-fullscreen .video-popover--comments {
   right: 24px !important;
   bottom: 66px !important;
   left: 24px !important;
-  height: min(340px, 42vh) !important;
+  height: auto !important;
   border-radius: 14px !important;
   transform: none !important;
+}
+
+.video-modal__panel.is-fullscreen .video-popover--comments.is-expanded {
+  height: min(340px, 42vh) !important;
+  max-height: min(340px, 42vh) !important;
 }
 
 .video-comments__head {
@@ -1299,6 +1299,9 @@
 .video-comments__list article {
   display: grid !important;
   grid-template-columns: minmax(58px, auto) minmax(0, 1fr) auto !important;
+  grid-template-areas:
+    "author text reply"
+    "time text reply" !important;
   column-gap: 10px !important;
   align-items: start !important;
   min-width: 0 !important;
@@ -1310,7 +1313,7 @@
 }
 
 .video-comments__list article span {
-  grid-column: 1 / 2 !important;
+  grid-area: author !important;
   min-width: 0 !important;
   overflow: hidden !important;
   color: rgba(255, 248, 231, 0.86) !important;
@@ -1319,7 +1322,7 @@
 }
 
 .video-comments__list article p {
-  grid-column: 2 / 4 !important;
+  grid-area: text !important;
   min-width: 0 !important;
   margin: 0 !important;
   overflow-wrap: anywhere !important;
@@ -1329,10 +1332,13 @@
 }
 
 .video-comments__list article time {
+  grid-area: time !important;
   color: rgba(255, 248, 231, 0.42) !important;
 }
 
 .video-comments__list article button {
+  grid-area: reply !important;
+  align-self: center !important;
   color: rgba(255, 248, 231, 0.62) !important;
   border: 0 !important;
   background: transparent !important;

@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "node scripts/build-vnext.mjs",
     "build:full": "vite build",
-    "test": "node scripts/test-media-paths.mjs && node scripts/test-video-gateway.mjs && node scripts/test-video-ui.mjs && node scripts/verify-video-modal.mjs",
+    "test": "node scripts/test-media-paths.mjs && node scripts/test-video-gateway.mjs && node scripts/test-video-ui.mjs && node scripts/test-video-modal-contracts.mjs && node scripts/verify-video-modal.mjs",
     "test:video-modal": "node scripts/verify-video-modal.mjs",
     "lint": "eslint .",
     "preview": "vite preview"

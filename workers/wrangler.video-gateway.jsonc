@@ -6,8 +6,8 @@
   "workers_dev": false,
   "routes": [
     {
-      "pattern": "video.elvisbroizlinear.com/*",
-      "zone_name": "elvisbroizlinear.com"
+      "pattern": "video.elvisbroizlinear.com",
+      "custom_domain": true
     }
   ],
   "vars": {

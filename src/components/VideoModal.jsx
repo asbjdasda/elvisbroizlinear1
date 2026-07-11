@@ -200,6 +200,11 @@ function VideoModalContent({ item, onClose }) {
   }, [muted, videoSrc, volume])
 
   useEffect(() => {
+    if (activePanel !== 'comments') return
+    videoRef.current?.pause()
+  }, [activePanel])
+
+  useEffect(() => {
     const handleFullscreenChange = () => {
       setIsFullscreen(document.fullscreenElement === panelRef.current)
     }
@@ -325,7 +330,10 @@ function VideoModalContent({ item, onClose }) {
   }
 
   function openPanel(panel) {
-    if (panel === 'comments' && activePanel !== 'comments') setCommentsExpanded(false)
+    if (panel === 'comments' && activePanel !== 'comments') {
+      setCommentsExpanded(false)
+      setIsPlaying(false)
+    }
     setActivePanel((current) => (current === panel ? null : panel))
     setMenuOpen(false)
     setCopied(false)
@@ -569,7 +577,7 @@ function VideoModalContent({ item, onClose }) {
         )}
 
         {activePanel === 'comments' && (
-          <div className="video-popover video-popover--comments" role="dialog" aria-label="Video comments">
+          <div className={`video-popover video-popover--comments${commentsExpanded ? ' is-expanded' : ''}`} role="dialog" aria-label="Video comments">
             <button className="video-popover__close" type="button" aria-label="Close comments" onClick={() => setActivePanel(null)}>
               <X size={16} />
             </button>
@@ -598,8 +606,8 @@ function VideoModalContent({ item, onClose }) {
               </button>
             </div>
             <div className="video-comments__list" hidden={!commentsExpanded}>
-              {displayComments.length ? (
-                displayComments.map((comment) => (
+              {comments.length ? (
+                comments.map((comment) => (
                   <article className={comment.pinned ? 'is-pinned' : ''} key={comment.id}>
                     <span>{comment.author}</span>
                     <p>{comment.text}</p>
