@@ -102,6 +102,7 @@ function VideoModalContent({ item, onClose }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activePanel, setActivePanel] = useState(null)
   const [isFullscreen, setIsFullscreen] = useState(false)
+  const [hasEnded, setHasEnded] = useState(false)
   const [buffering, setBuffering] = useState(true)
   const [bufferedProgress, setBufferedProgress] = useState(0)
   const [playedProgress, setPlayedProgress] = useState(0)
@@ -206,7 +207,9 @@ function VideoModalContent({ item, onClose }) {
 
   useEffect(() => {
     const handleFullscreenChange = () => {
-      setIsFullscreen(document.fullscreenElement === panelRef.current)
+      const nextFullscreen = document.fullscreenElement === panelRef.current
+      setIsFullscreen(nextFullscreen)
+      setControlsVisible(videoRef.current?.ended || (!nextFullscreen && videoRef.current?.paused))
     }
     document.addEventListener('fullscreenchange', handleFullscreenChange)
     return () => document.removeEventListener('fullscreenchange', handleFullscreenChange)
@@ -217,6 +220,7 @@ function VideoModalContent({ item, onClose }) {
     if (!video) return
     if (video.paused) {
       setVideoSourceError('')
+      setHasEnded(false)
       try {
         await video.play()
         setIsPlaying(true)
@@ -230,7 +234,7 @@ function VideoModalContent({ item, onClose }) {
     } else {
       video.pause()
       clearControlsHideTimer()
-      setControlsVisible(true)
+      setControlsVisible(!isFullscreen)
     }
   }
 
@@ -258,8 +262,7 @@ function VideoModalContent({ item, onClose }) {
   }
 
   async function toggleFullscreen() {
-    if (videoRef.current && !videoRef.current.paused) hideControlsNow()
-    else revealControls(1600)
+    setControlsVisible(false)
     if (document.fullscreenElement) {
       await document.exitFullscreen().catch(() => {})
       return
@@ -312,7 +315,6 @@ function VideoModalContent({ item, onClose }) {
     event.preventDefault()
     event.currentTarget.setPointerCapture?.(event.pointerId)
     setScrubbing(true)
-    revealControls(1800)
     updateProgressPreview(event, true)
   }
 
@@ -320,7 +322,6 @@ function VideoModalContent({ item, onClose }) {
     if (scrubbing) updateProgressPreview(event, true)
     event.currentTarget.releasePointerCapture?.(event.pointerId)
     setScrubbing(false)
-    scheduleControlsHide(1000)
   }
 
   function handleProgressPointerLeave() {
@@ -328,13 +329,7 @@ function VideoModalContent({ item, onClose }) {
     setProgressPreview((current) => ({ ...current, visible: false }))
   }
 
-  function handlePlayerPointerMove(event) {
-    const rect = event.currentTarget.getBoundingClientRect()
-    const bottomHoverZone = event.clientY >= rect.bottom - 112
-    if (bottomHoverZone) {
-      revealControls(1200)
-      return
-    }
+  function handlePlayerPointerMove() {
     if (videoRef.current && !videoRef.current.paused) hideControlsNow()
   }
 
@@ -411,7 +406,6 @@ function VideoModalContent({ item, onClose }) {
           onDoubleClick={toggleFullscreen}
           onMouseMove={handlePlayerPointerMove}
           onMouseLeave={() => scheduleControlsHide(500)}
-          onFocus={() => revealControls(1600)}
         >
           {loading && (
             <div className="video-modal__loading">
@@ -442,11 +436,17 @@ function VideoModalContent({ item, onClose }) {
             }}
             onPlay={() => {
               setIsPlaying(true)
+              setHasEnded(false)
               hideControlsNow()
             }}
             onPause={() => {
               setIsPlaying(false)
               clearControlsHideTimer()
+              setControlsVisible(document.fullscreenElement !== panelRef.current)
+            }}
+            onEnded={() => {
+              setIsPlaying(false)
+              setHasEnded(true)
               setControlsVisible(true)
             }}
             onLoadStart={() => setBuffering(true)}
@@ -472,7 +472,7 @@ function VideoModalContent({ item, onClose }) {
             onPlaying={() => setBuffering(false)}
           />}
 
-          <div ref={controlsRef} className="video-player__controls" aria-label="Video controls">
+          <div ref={controlsRef} className="video-player__controls" aria-label="Video controls" data-ended={hasEnded || undefined}>
             <button className="video-player__button video-player__button--primary" type="button" aria-label={isPlaying ? 'Pause' : 'Play'} onClick={togglePlay}>
               {isPlaying ? <Pause size={18} fill="currentColor" /> : <Play size={18} fill="currentColor" />}
             </button>
@@ -536,7 +536,7 @@ function VideoModalContent({ item, onClose }) {
             onPointerCancel={handleProgressPointerUp}
             onPointerLeave={handleProgressPointerLeave}
           >
-            <output className="video-player__time-tip" style={{ left: `${progressPreview.percent}%` }} aria-live="polite">
+            <output className="video-player__time-tip" style={{ left: `clamp(28px, ${progressPreview.percent}%, calc(100% - 28px))` }} aria-live="polite">
               {progressPreview.label}
             </output>
             <div className="video-player__progress-buffer" />

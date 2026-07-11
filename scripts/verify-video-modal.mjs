@@ -250,17 +250,18 @@ try {
   })()`)
   await waitFor(client, "document.querySelector('.video-player')?.classList.contains('has-hidden-controls')")
 
-  const hoverReveal = await client.evaluate(`(() => {
+  const hoverVisibility = await client.evaluate(`(() => {
     const player = document.querySelector('.video-player')
     const rect = player.getBoundingClientRect()
     player.dispatchEvent(new MouseEvent('mousemove', { bubbles: true, clientY: rect.top + rect.height * 0.25 }))
     const afterMiddle = player.classList.contains('has-hidden-controls')
     player.dispatchEvent(new MouseEvent('mousemove', { bubbles: true, clientY: rect.bottom - 20 }))
-    return { afterMiddle }
+    const afterBottom = player.classList.contains('has-hidden-controls')
+    return { afterMiddle, afterBottom }
   })()`)
 
-  assert.equal(hoverReveal.afterMiddle, true)
-  await waitFor(client, "!document.querySelector('.video-player')?.classList.contains('has-hidden-controls')")
+  assert.equal(hoverVisibility.afterMiddle, true)
+  assert.equal(hoverVisibility.afterBottom, true)
 
   await client.evaluate(`(() => {
     const progress = document.querySelector('.video-player__progress')
@@ -275,6 +276,18 @@ try {
 
   await waitFor(client, "document.querySelector('.video-player__progress')?.classList.contains('is-previewing')")
   await waitFor(client, "document.querySelector('.video-player__time-tip')?.textContent === '01:29'")
+
+  const fullscreenChrome = await client.evaluate(`(() => {
+    const panel = document.querySelector('.video-modal__panel')
+    panel.classList.add('is-fullscreen')
+    const topbarDisplay = getComputedStyle(document.querySelector('.video-modal__topbar')).display
+    panel.classList.remove('is-fullscreen')
+    return { topbarDisplay }
+  })()`)
+  assert.equal(fullscreenChrome.topbarDisplay, 'none')
+
+  await client.evaluate(`document.querySelector('.video-player video').dispatchEvent(new Event('ended', { bubbles: true }))`)
+  await waitFor(client, "!document.querySelector('.video-player')?.classList.contains('has-hidden-controls')")
 
   await client.evaluate(`(() => {
     const video = document.querySelector('.video-player video')

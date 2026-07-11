@@ -21,6 +21,8 @@ assert.match(
 assert.match(component, /const \[isPlaying, setIsPlaying\] = useState\(false\)/)
 assert.match(component, /<video[\s\S]*?autoPlay[\s\S]*?>/, 'the modal video must start after the visitor opens it from the card play button')
 assert.doesNotMatch(component, /video\.play\(\)\.catch\(\(\) => \{\}\)/)
+assert.doesNotMatch(component, /bottomHoverZone[\s\S]*?revealControls/, 'hovering near the bottom must not reveal the control panel')
+assert.match(component, /onEnded=\{\(\) => \{[\s\S]*?setControlsVisible\(true\)[\s\S]*?\}\}/, 'controls must return when playback finishes')
 const openPanelBody = component.match(/function openPanel\(panel\) \{([\s\S]*?)\n  \}/)?.[1] || ''
 assert.match(openPanelBody, /setIsPlaying\(false\)/)
 
@@ -33,6 +35,13 @@ const volumeInputRule = css.match(/\.video-player__volume-slider input \{([\s\S]
 assert.match(volumeInputRule, /writing-mode:\s*vertical-lr/)
 assert.match(volumeInputRule, /transform:\s*none/)
 assert.doesNotMatch(volumeInputRule, /rotate\(/)
+
+assert.match(
+  css,
+  /\/\* Bottom-locked progress bar[\s\S]*?\.video-player__progress \{[\s\S]*?overflow:\s*visible/,
+  'progress hover time must not be clipped',
+)
+assert.match(css, /\.video-modal__panel\.is-fullscreen \.video-modal__topbar \{[\s\S]*?display:\s*none\s*!important/, 'fullscreen title and close button must stay hidden')
 
 assert.match(
   component,
