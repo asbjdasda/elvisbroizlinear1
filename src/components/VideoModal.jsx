@@ -50,7 +50,7 @@ function runtimeMediaOptions() {
     baseUrl: import.meta.env.BASE_URL,
     production: import.meta.env.PROD,
     r2AssetBase: import.meta.env.VITE_R2_ASSET_BASE,
-    videoGatewayBase: import.meta.env.VITE_VIDEO_GATEWAY_BASE,
+    videoGatewayBase: import.meta.env.VITE_VIDEO_GATEWAY_BASE || 'https://video.elvisbroizlinear.com',
   }
 }
 
@@ -94,7 +94,7 @@ function VideoModalContent({ item, onClose }) {
   const controlsHideTimerRef = useRef(null)
   const storageKey = `brozien-comments:${item.id}`
   const [loadedSrc, setLoadedSrc] = useState(null)
-  const [isPlaying, setIsPlaying] = useState(true)
+  const [isPlaying, setIsPlaying] = useState(false)
   const [controlsVisible, setControlsVisible] = useState(true)
   const [muted, setMuted] = useState(false)
   const [volume, setVolume] = useState(0.5)
@@ -216,8 +216,17 @@ function VideoModalContent({ item, onClose }) {
     const video = videoRef.current
     if (!video) return
     if (video.paused) {
-      await video.play().catch(() => {})
-      hideControlsNow()
+      setVideoSourceError('')
+      try {
+        await video.play()
+        setIsPlaying(true)
+        hideControlsNow()
+      } catch (error) {
+        setIsPlaying(false)
+        setBuffering(false)
+        setVideoSourceError(`Playback failed: ${error instanceof Error ? error.message : 'Unknown media error'}`)
+        revealControls(3000)
+      }
     } else {
       video.pause()
       clearControlsHideTimer()
