@@ -9,7 +9,7 @@
 - Full product videos are requested from the Worker only after a visitor opens a video modal.
 - Hero `/assets/cliff-life.mp4` is 3,971,322 bytes and is copied without transcoding.
 
-The Worker URL is stable per object. It does not generate per-visitor `exp` or `sig` query strings. The Worker cache key is the normalized R2 object key plus the requested byte range, so repeated video segments can be served from the edge cache.
+The Worker URL is stable per object. It does not generate per-visitor `exp` or `sig` query strings. The Worker cache key is the normalized R2 object key, its current R2 ETag, and the requested byte range. Replacing a file at the same R2 key changes the ETag and bypasses old cached segments automatically.
 
 ## 1. Check R2 object layout
 

@@ -47,8 +47,9 @@ function parseRange(rangeHeader, size) {
   return { offset: start, length: Math.min(end, size - 1) - start + 1 }
 }
 
-function cacheRequest(url, range) {
+function cacheRequest(url, range, etag) {
   const cacheUrl = new URL(`/${normalizeKey(url.pathname)}`, url.origin)
+  if (etag) cacheUrl.searchParams.set('__r2_etag', etag)
   if (range) cacheUrl.searchParams.set('__range', `${range.offset}-${range.offset + range.length - 1}`)
   return new Request(cacheUrl, { method: 'GET' })
 }
@@ -76,7 +77,7 @@ async function handleVideo(request, env, ctx) {
     return new Response(null, { status: 416, headers: { ...corsHeaders(request, env), 'Content-Range': `bytes */${head.size}` } })
   }
 
-  const cacheKey = cacheRequest(url, range)
+  const cacheKey = cacheRequest(url, range, head.httpEtag || head.etag || '')
   const cached = await caches.default.match(cacheKey)
   if (cached) return clientResponse(cached, request, env, 'HIT')
 

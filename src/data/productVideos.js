@@ -302,11 +302,11 @@ export const productVideoCategories = [
     "items": [
       {
         "id": "01-animation-showreel",
-        "title": "Animation Showreel",
+        "title": "The art of creative editing",
         "category": "Motion Graphics",
         "orientation": "landscape",
-        "sourceSizeMb": 35.89,
-        "duration": "1:21",
+        "sourceSizeMb": 11.65,
+        "duration": "1:50",
         "src": "/assets/product-videos/motion-graphics/01-animation-showreel.mp4",
         "previewSrc": "/assets/product-videos/motion-graphics/01-animation-showreel.mp4",
         "poster": "/assets/product-videos/motion-graphics/01-animation-showreel-poster.jpg"
