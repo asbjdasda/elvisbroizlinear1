@@ -11,6 +11,39 @@
 
 The Worker URL is stable per object. It does not generate per-visitor `exp` or `sig` query strings. The Worker cache key is the normalized R2 object key, its current R2 ETag, and the requested byte range. Replacing a file at the same R2 key changes the ETag and bypasses old cached segments automatically.
 
+## Video delivery preparation gate
+
+Do not upload source MP4 files directly. The repository has an explicit 36-video source manifest in `scripts/product-video-sources.mjs`; it preserves every existing R2 object key and includes Halloween as the seventh 3D Motion item. In particular, do not run `scripts/generate-product-assets.js` for R2 delivery: that generator scans the whole source tree, rebuilds IDs, and can change stable URLs.
+
+From the repository root, prepare and verify the delivery set:
+
+```powershell
+npm run video:prepare
+npm run video:verify
+```
+
+Generated files live only under the ignored `tmp-product-video-delivery/` directory. The preparation policy is:
+
+- Compatible files are remuxed without quality loss using `+faststart`.
+- High-bitrate, HEVC, non-AAC, or oversized files are delivered as H.264/AAC MP4.
+- Landscape output is at most 1920x1080; portrait output is at most 1080x1920.
+- Transcodes use CRF 21, a 5800 kbps video maximum rate, a 12 Mbps buffer, AAC 160 kbps, `yuv420p`, and forced keyframes every two seconds. The 5800 kbps video ceiling leaves room for audio and MP4 overhead under the 6500 kbps total-file gate.
+- Every output must have `moov` before `mdat`. Verification rejects missing or extra keys, unsupported codecs, oversized dimensions, abnormal total bitrate, and tail `moov` files.
+
+Upload is guarded by the same verifier and replaces the existing R2 keys one at a time:
+
+```powershell
+npm run video:upload -- --wrangler "C:\absolute\path\to\wrangler.cmd"
+```
+
+If Cloudflare authentication or the network interrupts a batch after earlier objects were already remotely verified, resume from the failed manifest key:
+
+```powershell
+npm run video:upload -- --wrangler "C:\absolute\path\to\wrangler.cmd" --start-at "/assets/product-videos/<category>/<filename>.mp4"
+```
+
+Each `wrangler r2 object put` gets up to three attempts for transient Cloudflare or network failures. After a successful put, the command checks the public Worker URL for `HEAD 200`, matching content length, byte-range `206`, faststart atom order, and two repeated range-cache responses. A new R2 ETag makes old Worker range-cache entries unreachable. No Worker or Pages deployment is required when only the R2 objects change.
+
 ## 1. Check R2 object layout
 
 In Cloudflare Dashboard, open **R2 Object Storage > elvisbroizlinear**. Keep the bucket private and confirm full videos use exactly this key layout:

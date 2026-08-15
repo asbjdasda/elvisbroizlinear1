@@ -69,6 +69,17 @@ export const productVideoCategories = [
         "src": "/assets/product-videos/3d-motion/06-usay-ring-one-concept-ad.mp4",
         "previewSrc": "/assets/product-videos/3d-motion/06-usay-ring-one-concept-ad.mp4",
         "poster": "/assets/product-videos/3d-motion/06-usay-ring-one-concept-ad-poster.jpg"
+      },
+      {
+        "id": "07-halloween-big-mouth-monster-lego",
+        "title": "Halloween Big Mouth Monster LEGO",
+        "category": "3D Motion",
+        "orientation": "landscape",
+        "sourceSizeMb": 45.54,
+        "duration": "0:25",
+        "src": "/assets/product-videos/3d-motion/07-halloween-big-mouth-monster-lego.mp4",
+        "previewSrc": "/assets/product-videos/3d-motion/07-halloween-big-mouth-monster-lego.mp4",
+        "poster": "/assets/product-videos/3d-motion/07-halloween-big-mouth-monster-lego-poster.jpg"
       }
     ]
   },
