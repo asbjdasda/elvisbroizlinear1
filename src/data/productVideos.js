@@ -38,17 +38,6 @@ export const productVideoCategories = [
         "poster": "/assets/product-videos/3d-motion/03-nimo-laptop-adwatermark-poster.jpg"
       },
       {
-        "id": "04-porsche-gt3-ad",
-        "title": "Porsche GT3 Ad",
-        "category": "3D Motion",
-        "orientation": "landscape",
-        "sourceSizeMb": 20.17,
-        "duration": "0:33",
-        "src": "/assets/product-videos/3d-motion/04-porsche-gt3-ad.mp4",
-        "previewSrc": "/assets/product-videos/3d-motion/04-porsche-gt3-ad.mp4",
-        "poster": "/assets/product-videos/3d-motion/04-porsche-gt3-ad-poster.jpg"
-      },
-      {
         "id": "05-usay-ring-1-glassses",
         "title": "USAY RING 1 Glassses",
         "category": "3D Motion",

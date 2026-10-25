@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Replace the 35 existing production R2 videos at their existing object keys, add Halloween as the seventh 3D Motion item, and deliver all 36 as fast-start, web-friendly MP4 files that start and seek reliably on slower connections.
+**Goal:** Replace the 34 remaining production R2 videos at their existing object keys, add Halloween as the sixth 3D Motion item after the Porsche removal, and deliver all 35 as fast-start, web-friendly MP4 files that start and seek reliably on slower connections.
 
-**Architecture:** Keep the private R2 bucket, Worker gateway, existing public URLs, and React player unchanged. Add Halloween's site data, poster, preview, and R2 key, plus one explicit source manifest and one delivery CLI that prepares, verifies, and uploads exactly the 36 published videos; verification is a mandatory gate before upload.
+**Architecture:** Keep the private R2 bucket, Worker gateway, existing public URLs, and React player unchanged. Add Halloween's site data, poster, preview, and R2 key, plus one explicit source manifest and one delivery CLI that prepares, verifies, and uploads exactly the 35 published videos; verification is a mandatory gate before upload.
 
 **Tech Stack:** Node.js ESM, bundled FFmpeg/libx264/AAC, Wrangler 4, Cloudflare R2, existing Node assertion tests.
 
@@ -19,7 +19,7 @@
 
 - [ ] **Step 1: Write the failing mapping test**
 
-Import `productVideoCategories` and the explicit source manifest. Assert that all 36 `item.src` values have exactly one source entry, no extra source entry exists, the stable showreel key maps to `Motion Graphics/The art of creative editing.mp4`, and Halloween is the seventh 3D Motion item.
+Import `productVideoCategories` and the explicit source manifest. Assert that all 35 `item.src` values have exactly one source entry, no extra source entry exists, the stable showreel key maps to `Motion Graphics/The art of creative editing.mp4`, and Halloween is the sixth 3D Motion item after the Porsche removal.
 
 - [ ] **Step 2: Run the focused test and verify RED**
 

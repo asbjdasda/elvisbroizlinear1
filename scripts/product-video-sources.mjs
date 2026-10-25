@@ -17,11 +17,6 @@ export const PRODUCT_VIDEO_SOURCES = {
     '3D motion',
     'nimo laptop Adwatermark.mp4',
   ),
-  '/assets/product-videos/3d-motion/04-porsche-gt3-ad.mp4': source(
-    '3D motion',
-    'Porsche GT3',
-    'Porsche GT3 Ad.mp4',
-  ),
   '/assets/product-videos/3d-motion/05-usay-ring-1-glassses.mp4': source(
     '3D motion',
     'USAY RING 1 Glassses.mp4',
