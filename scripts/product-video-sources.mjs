@@ -159,12 +159,4 @@ export const PRODUCT_VIDEO_SOURCES = {
     'TVC',
     'HOROW Toilet Filming Ad.mp4',
   ),
-  '/assets/product-videos/tvc-advertising/03-js200-super-engine-launch.mp4': source(
-    'TVC',
-    'JS200 Super Engine Launch.mp4',
-  ),
-  '/assets/product-videos/tvc-advertising/04-okx-market-video.mp4': source(
-    'TVC',
-    'OKX Market video.mp4',
-  ),
 }

@@ -394,28 +394,6 @@ export const productVideoCategories = [
         "src": "/assets/product-videos/tvc-advertising/02-horow-toilet-filming-ad.mp4",
         "previewSrc": "/assets/product-videos/tvc-advertising/02-horow-toilet-filming-ad.mp4",
         "poster": "/assets/product-videos/tvc-advertising/02-horow-toilet-filming-ad-poster.jpg"
-      },
-      {
-        "id": "03-js200-super-engine-launch",
-        "title": "JS200 Super Engine Launch",
-        "category": "TVC",
-        "orientation": "landscape",
-        "sourceSizeMb": 19.83,
-        "duration": "1:42",
-        "src": "/assets/product-videos/tvc-advertising/03-js200-super-engine-launch.mp4",
-        "previewSrc": "/assets/product-videos/tvc-advertising/03-js200-super-engine-launch.mp4",
-        "poster": "/assets/product-videos/tvc-advertising/03-js200-super-engine-launch-poster.jpg"
-      },
-      {
-        "id": "04-okx-market-video",
-        "title": "OKX Market video",
-        "category": "TVC",
-        "orientation": "landscape",
-        "sourceSizeMb": 89.87,
-        "duration": "0:60",
-        "src": "/assets/product-videos/tvc-advertising/04-okx-market-video.mp4",
-        "previewSrc": "/assets/product-videos/tvc-advertising/04-okx-market-video.mp4",
-        "poster": "/assets/product-videos/tvc-advertising/04-okx-market-video-poster.jpg"
       }
     ]
   }
