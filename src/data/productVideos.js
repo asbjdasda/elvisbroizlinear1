@@ -394,6 +394,17 @@ export const productVideoCategories = [
         "src": "/assets/product-videos/tvc-advertising/02-horow-toilet-filming-ad.mp4",
         "previewSrc": "/assets/product-videos/tvc-advertising/02-horow-toilet-filming-ad.mp4",
         "poster": "/assets/product-videos/tvc-advertising/02-horow-toilet-filming-ad-poster.jpg"
+      },
+      {
+        "id": "03-security-cam-brand-introduction",
+        "title": "Security Cam Brand Introduction",
+        "category": "TVC",
+        "orientation": "landscape",
+        "sourceSizeMb": 70.03,
+        "duration": "1:33",
+        "src": "/assets/product-videos/tvc-advertising/03-security-cam-brand-introduction.mp4",
+        "previewSrc": "/assets/product-videos/tvc-advertising/03-security-cam-brand-introduction.mp4",
+        "poster": "/assets/product-videos/tvc-advertising/03-security-cam-brand-introduction-poster.jpg"
       }
     ]
   }

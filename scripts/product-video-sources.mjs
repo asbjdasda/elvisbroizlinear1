@@ -159,4 +159,8 @@ export const PRODUCT_VIDEO_SOURCES = {
     'TVC',
     'HOROW Toilet Filming Ad.mp4',
   ),
+  '/assets/product-videos/tvc-advertising/03-security-cam-brand-introduction.mp4': source(
+    'TVC',
+    'Security-Cam-Brand-Introduction.mp4',
+  ),
 }
