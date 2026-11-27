@@ -69,6 +69,61 @@ export const productVideoCategories = [
         "src": "/assets/product-videos/3d-motion/07-halloween-big-mouth-monster-lego.mp4",
         "previewSrc": "/assets/product-videos/3d-motion/07-halloween-big-mouth-monster-lego.mp4",
         "poster": "/assets/product-videos/3d-motion/07-halloween-big-mouth-monster-lego-poster.jpg"
+      },
+      {
+        "id": "08-e2-light-bulb-camera",
+        "title": "E2 Light Bulb Camera",
+        "category": "3D Motion",
+        "orientation": "landscape",
+        "sourceSizeMb": 66.28,
+        "duration": "0:32",
+        "src": "/assets/product-videos/3d-motion/08-e2-light-bulb-camera.mp4",
+        "previewSrc": "/assets/product-videos/3d-motion/08-e2-light-bulb-camera.mp4",
+        "poster": "/assets/product-videos/3d-motion/08-e2-light-bulb-camera-poster.jpg"
+      },
+      {
+        "id": "09-g15-outdoor-camera",
+        "title": "G15 Outdoor Camera",
+        "category": "3D Motion",
+        "orientation": "landscape",
+        "sourceSizeMb": 170.01,
+        "duration": "0:43",
+        "src": "/assets/product-videos/3d-motion/09-g15-outdoor-camera.mp4",
+        "previewSrc": "/assets/product-videos/3d-motion/09-g15-outdoor-camera.mp4",
+        "poster": "/assets/product-videos/3d-motion/09-g15-outdoor-camera-poster.jpg"
+      },
+      {
+        "id": "10-indoor-smart-security-camera",
+        "title": "Indoor Smart Security Camera",
+        "category": "3D Motion",
+        "orientation": "landscape",
+        "sourceSizeMb": 54.14,
+        "duration": "0:29",
+        "src": "/assets/product-videos/3d-motion/10-indoor-smart-security-camera.mp4",
+        "previewSrc": "/assets/product-videos/3d-motion/10-indoor-smart-security-camera.mp4",
+        "poster": "/assets/product-videos/3d-motion/10-indoor-smart-security-camera-poster.jpg"
+      },
+      {
+        "id": "11-solar-powered-4g-outdoor-security-camera",
+        "title": "Solar-Powered 4G Outdoor Security Camera",
+        "category": "3D Motion",
+        "orientation": "landscape",
+        "sourceSizeMb": 42.68,
+        "duration": "0:35",
+        "src": "/assets/product-videos/3d-motion/11-solar-powered-4g-outdoor-security-camera.mp4",
+        "previewSrc": "/assets/product-videos/3d-motion/11-solar-powered-4g-outdoor-security-camera.mp4",
+        "poster": "/assets/product-videos/3d-motion/11-solar-powered-4g-outdoor-security-camera-poster.jpg"
+      },
+      {
+        "id": "12-wireless-security-camera-l7",
+        "title": "Wireless Security Camera L7",
+        "category": "3D Motion",
+        "orientation": "landscape",
+        "sourceSizeMb": 68.23,
+        "duration": "0:35",
+        "src": "/assets/product-videos/3d-motion/12-wireless-security-camera-l7.mp4",
+        "previewSrc": "/assets/product-videos/3d-motion/12-wireless-security-camera-l7.mp4",
+        "poster": "/assets/product-videos/3d-motion/12-wireless-security-camera-l7-poster.jpg"
       }
     ]
   },

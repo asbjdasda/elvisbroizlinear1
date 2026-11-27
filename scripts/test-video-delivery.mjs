@@ -60,10 +60,18 @@ await assert.rejects(
 const publishedVideos = productVideoCategories.flatMap((category) => category.items)
 const publishedKeys = publishedVideos.map((video) => video.src)
 assert.equal(productVideoCategories.find(({ id }) => id === 'tvc-advertising').items[2]?.id, '03-security-cam-brand-introduction')
+const motionGallery = productVideoCategories.find(({ id }) => id === '3d-motion')
+assert.deepEqual(motionGallery.items.slice(6, 11).map(({ id }) => id), [
+  '08-e2-light-bulb-camera',
+  '09-g15-outdoor-camera',
+  '10-indoor-smart-security-camera',
+  '11-solar-powered-4g-outdoor-security-camera',
+  '12-wireless-security-camera-l7',
+])
 const mappedKeys = Object.keys(PRODUCT_VIDEO_SOURCES)
 
-assert.equal(publishedKeys.length, 34, 'expected exactly 34 published videos')
-assert.equal(new Set(publishedKeys).size, 34, 'published video keys must be unique')
+assert.equal(publishedKeys.length, 39, 'expected exactly 39 published videos')
+assert.equal(new Set(publishedKeys).size, 39, 'published video keys must be unique')
 assert.deepEqual(
   mappedKeys.toSorted(),
   publishedKeys.toSorted(),
@@ -88,7 +96,7 @@ assert.equal(
   'Halloween video must use a stable key in 3D Motion',
 )
 assert.equal(
-  productVideoCategories.find((category) => category.id === '3d-motion').items.at(-1).id,
+  motionGallery.items[5].id,
   '07-halloween-big-mouth-monster-lego',
   'Halloween video must be the sixth 3D Motion item after the Porsche removal',
 )
@@ -196,4 +204,4 @@ assert.ok(
   'delivery validation must reject bitrate, codecs, dimensions, and tail moov together',
 )
 
-console.log('Video delivery tests passed (34 published keys and delivery policy).')
+console.log('Video delivery tests passed (39 published keys and delivery policy).')

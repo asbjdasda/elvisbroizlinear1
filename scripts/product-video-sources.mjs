@@ -29,6 +29,26 @@ export const PRODUCT_VIDEO_SOURCES = {
     '3D motion',
     'Halloween Big Mouth Monster LEGO.mp4',
   ),
+  '/assets/product-videos/3d-motion/08-e2-light-bulb-camera.mp4': source(
+    '3D motion',
+    'E2 Light Bulb Camera.mp4',
+  ),
+  '/assets/product-videos/3d-motion/09-g15-outdoor-camera.mp4': source(
+    '3D motion',
+    'G15 outdoor camera.mp4',
+  ),
+  '/assets/product-videos/3d-motion/10-indoor-smart-security-camera.mp4': source(
+    '3D motion',
+    'Indoor Smart Security Camera.mp4',
+  ),
+  '/assets/product-videos/3d-motion/11-solar-powered-4g-outdoor-security-camera.mp4': source(
+    '3D motion',
+    'Solar-Powered 4G Outdoor Security Camera.mp4',
+  ),
+  '/assets/product-videos/3d-motion/12-wireless-security-camera-l7.mp4': source(
+    '3D motion',
+    'Wireless Security Camera L7.mp4',
+  ),
   '/assets/product-videos/filming-post/01-engine-super-starter.mp4': source(
     'Filming & Post-Production',
     'Landscape',
