@@ -316,7 +316,6 @@ main {
 }
 
 .hero__video,
-.hero__dot-field,
 .hero__gradient,
 .noise-overlay,
 .hero__slats {
@@ -333,11 +332,23 @@ main {
   filter: none;
 }
 
-.hero__dot-field {
-  z-index: 1;
-  opacity: 0.52;
-  mix-blend-mode: screen;
-  pointer-events: none;
+/* The soft bands travel with the reveal edge and clear the farthest corner. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero__video {
+    --wave-edge: 150%;
+    --wave-mask: radial-gradient(circle farthest-corner at center,
+      black calc(var(--wave-edge) - 32%),
+      rgba(0, 0, 0, .72) calc(var(--wave-edge) - 25%),
+      rgba(0, 0, 0, .93) calc(var(--wave-edge) - 19%),
+      rgba(0, 0, 0, .34) calc(var(--wave-edge) - 12%),
+      rgba(0, 0, 0, .52) calc(var(--wave-edge) - 7%),
+      transparent var(--wave-edge));
+  }
+
+  .hero__video.is-revealing {
+    -webkit-mask-image: var(--wave-mask);
+    mask-image: var(--wave-mask);
+  }
 }
 
 .hero__gradient {

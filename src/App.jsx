@@ -1,4 +1,3 @@
-import DotField from './components/DotField'
 import ClientMapPanel from './components/ClientMapPanel'
 import clientMark0 from './assets/client-marks/green-ring.webp'
 import clientMark1 from './assets/client-marks/multicolor-chevron.webp'
@@ -576,11 +575,6 @@ function App() {
               <source src={HERO_VIDEO_URL} type="video/mp4" />
               <source src={assetPath('/assets/hero-preview.mp4')} type="video/mp4" />
             </video>
-            <div className="hero__dot-field" aria-hidden="true">
-              <DotField gradientFrom="#84cc16" gradientTo="#FF9FFC" dotRadius={0.8}
-                dotSpacing={15} cursorRadius={120} bulgeStrength={0.2} glowRadius={70}
-                gradientAngle={84} glowIntensity={0.25} baseOpacity={0.2} />
-            </div>
             <div className="noise-overlay" />
             <div className="hero__gradient" />
             <div className="hero__slats" aria-hidden="true">

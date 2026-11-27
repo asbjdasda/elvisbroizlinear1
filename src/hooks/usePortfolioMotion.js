@@ -1,48 +1,42 @@
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
 function usePortfolioMotion() {
-  useEffect(() => {
+  useLayoutEffect(() => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reducedMotion) return undefined
 
-    const heroTargets = ['.hero__copy h1', '.hero__cta-block', '.hero__join-glow', '.hero__brand-marquee']
-    let intro
     const ctx = gsap.context(() => {
-      intro = gsap.timeline({ defaults: { ease: 'expo.out' } })
+      const video = document.querySelector('.hero__video')
+      video.classList.add('is-revealing')
+      const intro = gsap.timeline({ defaults: { ease: 'power2.out' } })
       intro
-        .from('.hero__frame', {
-          clipPath: 'inset(12% 10% 12% 10% round 30px)',
-          scale: 0.965,
-          duration: 1.45,
-        })
-        .fromTo(
-          '.hero__video',
-          { scale: 1.03, opacity: 0 },
-          { scale: 1, opacity: 1, duration: 0.65 },
-          '<',
+        .fromTo(video,
+          { '--wave-edge': '0%', opacity: 0 },
+          { '--wave-edge': '135%', opacity: 1, duration: 1.8, ease: 'power1.out',
+            onComplete: () => video.classList.remove('is-revealing') },
         )
-        .addLabel('textEntry', 0.78)
+        .addLabel('textEntry', 1.1)
         .fromTo(
           '.hero__cta-block',
           { yPercent: 26, scaleX: 0.82, transformOrigin: 'left bottom', autoAlpha: 0 },
-          { yPercent: 0, scaleX: 1, autoAlpha: 1, duration: 1.35, clearProps: 'visibility,opacity,transform' },
+          { yPercent: 0, scaleX: 1, autoAlpha: 1, duration: 2.2, clearProps: 'visibility,opacity,transform' },
           'textEntry',
         )
         .fromTo(
           '.hero__copy h1',
           { yPercent: 26, scaleX: 0.82, transformOrigin: 'left bottom', autoAlpha: 0 },
-          { yPercent: 0, scaleX: 1, autoAlpha: 1, duration: 1.35, clearProps: 'visibility,opacity,transform' },
-          '-=0.82',
+          { yPercent: 0, scaleX: 1, autoAlpha: 1, duration: 2.2, clearProps: 'visibility,opacity,transform' },
+          'textEntry+=0.24',
         )
         .fromTo(
           ['.hero__join-glow', '.hero__brand-marquee'],
           { y: 24, autoAlpha: 0 },
           { y: 0, autoAlpha: 1, duration: 0.95, stagger: 0.12, clearProps: 'visibility,opacity,transform' },
-          '-=0.58',
+          'textEntry+=0.65',
         )
 
       gsap.utils.toArray('.motion-section').forEach((section) => {
@@ -83,20 +77,8 @@ function usePortfolioMotion() {
       })
     })
 
-    const fallbackTimer = window.setTimeout(() => {
-      intro?.progress(1).kill()
-      gsap.killTweensOf(heroTargets)
-      gsap.set(heroTargets, {
-        autoAlpha: 1,
-        y: 0,
-        yPercent: 0,
-        scaleX: 1,
-        clearProps: 'visibility,opacity,transform',
-      })
-    }, 2500)
-
     return () => {
-      window.clearTimeout(fallbackTimer)
+      document.querySelector('.hero__video')?.classList.remove('is-revealing')
       ctx.revert()
     }
   }, [])

@@ -1,4 +1,4 @@
-﻿# Brozien Personal Site
+# Brozien Personal Site
 
 React + Vite base for Brozien's portfolio site.
 
@@ -17,6 +17,6 @@ npm run build
 
 ## Assets
 
-- `/public/assets/hero-preview.mp4` - lightweight fallback for the looping R2 hero video. The background fades in and dims to 80% as the title enters.
+- `/public/assets/hero-preview.mp4` - lightweight fallback for the looping R2 hero video. A center-out ripple reveals the video once. The title settles after the video reaches full opacity.
 - `/public/assets/brozien-logo.png` - logo / avatar placeholder
 - `/public/assets/project-*.png` - initial project visuals
