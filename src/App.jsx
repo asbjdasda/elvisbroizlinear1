@@ -338,8 +338,8 @@ function ServicesSection() {
         {serviceItems.map((item) => item.number === '04' ? (
           <ClientMapPanel key={item.number} title={item.title} description={item.copy}>
             <ul className="client-marks" aria-label="Client logos">
-              {clientMarks.map(({ src, name }) => (
-                <li key={src}><img src={src} alt={name} loading="lazy" /></li>
+              {clientMarks.map(({ src, name }, index) => (
+                <li key={src} style={{ '--order': index }}><img src={src} alt={name} loading="lazy" /></li>
               ))}
             </ul>
           </ClientMapPanel>
