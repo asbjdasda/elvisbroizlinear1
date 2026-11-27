@@ -1,3 +1,4 @@
+import ClientMapPanel from './components/ClientMapPanel'
 import clientMark0 from './assets/client-marks/green-ring.webp'
 import clientMark1 from './assets/client-marks/multicolor-chevron.webp'
 import clientMark2 from './assets/client-marks/herdio.webp'
@@ -334,19 +335,20 @@ function ServicesSection() {
         <p>Selected capabilities</p>
       </div>
       <div className="services-list">
-        {serviceItems.map((item) => (
+        {serviceItems.map((item) => item.number === '04' ? (
+          <ClientMapPanel key={item.number} title={item.title} description={item.copy}>
+            <ul className="client-marks" aria-label="Client logos">
+              {clientMarks.map(({ src, name }) => (
+                <li key={src}><img src={src} alt={name} loading="lazy" /></li>
+              ))}
+            </ul>
+          </ClientMapPanel>
+        ) : (
           <article className="service-row motion-card" key={item.number}>
             <span>{item.number}</span>
             <div>
               <h3>{item.title}</h3>
               <p>{item.copy}</p>
-              {item.number === '04' && (
-                <ul className="client-marks" aria-label="Client logos">
-                  {clientMarks.map(({ src, name }) => (
-                    <li key={src}><img src={src} alt={name} loading="lazy" /></li>
-                  ))}
-                </ul>
-              )}
             </div>
           </article>
         ))}
