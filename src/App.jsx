@@ -1,3 +1,21 @@
+import clientMark0 from './assets/client-marks/green-ring.webp'
+import clientMark1 from './assets/client-marks/multicolor-chevron.webp'
+import clientMark2 from './assets/client-marks/herdio.webp'
+import clientMark3 from './assets/client-marks/leagend.webp'
+import clientMark4 from './assets/client-marks/ciberer.webp'
+import clientMark5 from './assets/client-marks/nimo.webp'
+import clientMark6 from './assets/client-marks/samassi.webp'
+import clientMark7 from './assets/client-marks/usay.webp'
+import clientMark8 from './assets/client-marks/zeblaze.webp'
+import clientMark9 from './assets/client-marks/highgreat.webp'
+import clientMark10 from './assets/client-marks/paxini.webp'
+import clientMark11 from './assets/client-marks/color-t.webp'
+import clientMark12 from './assets/client-marks/ubtech.webp'
+import clientMark13 from './assets/client-marks/silkroad.webp'
+import clientMark14 from './assets/client-marks/lingxing.webp'
+import clientMark15 from './assets/client-marks/iridescent-orb.webp'
+import clientMark16 from './assets/client-marks/arch.webp'
+import clientMark17 from './assets/client-marks/round-face.webp'
 import { ArrowLeft, ArrowRight, Eye, EyeOff, Mail, Phone, X } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import './App.css'
@@ -70,6 +88,27 @@ const skillItems = [
   { name: 'Octane', src: assetPath('/assets/skills/octane.webp') },
 ]
 
+const clientMarks = [
+  { src: clientMark0, name: '' },
+  { src: clientMark1, name: '' },
+  { src: clientMark2, name: 'Herdio' },
+  { src: clientMark3, name: 'Leagend' },
+  { src: clientMark4, name: 'Ciberer' },
+  { src: clientMark5, name: 'Nimo' },
+  { src: clientMark6, name: 'Samassi' },
+  { src: clientMark7, name: 'Usay' },
+  { src: clientMark8, name: 'Zeblaze' },
+  { src: clientMark9, name: 'HighGreat' },
+  { src: clientMark10, name: 'PaXini' },
+  { src: clientMark11, name: '' },
+  { src: clientMark12, name: 'UBTECH' },
+  { src: clientMark13, name: 'Silkroad Visual' },
+  { src: clientMark14, name: 'Lingxing' },
+  { src: clientMark15, name: '' },
+  { src: clientMark16, name: '' },
+  { src: clientMark17, name: '' },
+]
+
 const serviceItems = [
   {
     number: '01',
@@ -88,8 +127,8 @@ const serviceItems = [
   },
   {
     number: '04',
-    title: 'AI Motion Imagery',
-    copy: 'AI-assisted visual concepts, moving-image experiments, and new-format motion prototypes.',
+    title: 'Selected Brand Clients',
+    copy: 'A selection of brands for which I have successfully delivered projects.',
   },
 ]
 
@@ -301,6 +340,13 @@ function ServicesSection() {
             <div>
               <h3>{item.title}</h3>
               <p>{item.copy}</p>
+              {item.number === '04' && (
+                <ul className="client-marks" aria-label="Client logos">
+                  {clientMarks.map(({ src, name }) => (
+                    <li key={src}><img src={src} alt={name} loading="lazy" /></li>
+                  ))}
+                </ul>
+              )}
             </div>
           </article>
         ))}

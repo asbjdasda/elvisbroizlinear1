@@ -6696,3 +6696,34 @@ main {
 
 
 
+
+.client-marks {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  gap: 12px;
+}
+.client-marks li {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  height: 64px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .035);
+}
+.client-marks img {
+  width: 75%;
+  height: 36px;
+  object-fit: contain;
+}
+@media (max-width: 780px) {
+  .client-marks { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+}
+@media (max-width: 560px) {
+  .service-row:has(.client-marks) .client-marks { grid-column: 1 / -1; }
+  .service-row:has(.client-marks) > div { display: contents; }
+  .service-row:has(.client-marks) p { grid-column: 1 / -1; }
+  .client-marks { margin-top: 4px; }
+}
