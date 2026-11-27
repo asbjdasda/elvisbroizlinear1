@@ -26,8 +26,6 @@ function usePortfolioMotion() {
           '<',
         )
         .addLabel('textEntry', 0.78)
-        .fromTo('.hero__video', { filter: 'brightness(1)' },
-          { filter: 'brightness(0.8)', duration: 1.1, ease: 'power1.inOut' }, 'textEntry')
         .fromTo(
           '.hero__cta-block',
           { yPercent: 26, scaleX: 0.82, transformOrigin: 'left bottom', autoAlpha: 0 },

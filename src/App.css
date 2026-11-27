@@ -330,7 +330,7 @@ main {
   z-index: 0;
   object-fit: cover;
   opacity: 1;
-  filter: brightness(0.8);
+  filter: none;
 }
 
 .hero__dot-field {
