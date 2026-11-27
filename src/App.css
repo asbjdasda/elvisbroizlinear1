@@ -1,4 +1,4 @@
-﻿.page-shell {
+.page-shell {
   min-height: 100vh;
   color: #e8e4d0;
   background: #000;
@@ -6761,7 +6761,7 @@ main {
   display: grid;
   grid-template-columns: var(--service-number-width) minmax(0, 1fr) auto;
   align-items: center;
-  gap: inherit;
+  gap: 16px;
   width: 100%;
   padding: 0;
   border: 0;
