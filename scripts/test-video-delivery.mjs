@@ -69,10 +69,17 @@ assert.deepEqual(motionGallery.items.slice(6, 11).map(({ id }) => id), [
   '11-solar-powered-4g-outdoor-security-camera',
   '12-wireless-security-camera-l7',
 ])
+const filmingLandscape = productVideoCategories.find(({ id }) => id === 'filming-post').items
+  .filter(({ orientation }) => orientation === 'landscape')
+assert.deepEqual(filmingLandscape.slice(-3).map(({ id }) => id), [
+  '18-e3-light-bulb-camera',
+  '19-q1-w8b-window-camera',
+  '20-w9b-3mp-indoor-camera',
+])
 const mappedKeys = Object.keys(PRODUCT_VIDEO_SOURCES)
 
-assert.equal(publishedKeys.length, 40, 'expected exactly 40 published videos')
-assert.equal(new Set(publishedKeys).size, 40, 'published video keys must be unique')
+assert.equal(publishedKeys.length, 43, 'expected exactly 43 published videos')
+assert.equal(new Set(publishedKeys).size, 43, 'published video keys must be unique')
 assert.deepEqual(
   mappedKeys.toSorted(),
   publishedKeys.toSorted(),
@@ -205,4 +212,4 @@ assert.ok(
   'delivery validation must reject bitrate, codecs, dimensions, and tail moov together',
 )
 
-console.log('Video delivery tests passed (40 published keys and delivery policy).')
+console.log('Video delivery tests passed (43 published keys and delivery policy).')

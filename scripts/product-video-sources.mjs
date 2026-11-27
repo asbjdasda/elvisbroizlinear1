@@ -139,6 +139,21 @@ export const PRODUCT_VIDEO_SOURCES = {
     'Usay Vertical progress bar video',
     'Vertical progress bar video.mp4',
   ),
+  '/assets/product-videos/filming-post/18-e3-light-bulb-camera.mp4': source(
+    'Filming & Post-Production',
+    'Landscape',
+    'E3 Light Bulb Camera.mp4',
+  ),
+  '/assets/product-videos/filming-post/19-q1-w8b-window-camera.mp4': source(
+    'Filming & Post-Production',
+    'Landscape',
+    'Q1 W8B Window Camera.mp4',
+  ),
+  '/assets/product-videos/filming-post/20-w9b-3mp-indoor-camera.mp4': source(
+    'Filming & Post-Production',
+    'Landscape',
+    'W9B 3MP Indoor Camera.mp4',
+  ),
   '/assets/product-videos/ai-video-synthesis/01-usay-night-dream.mp4': source(
     'AI Video Synthesis',
     'Usay night dream.mp4',

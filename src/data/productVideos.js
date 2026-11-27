@@ -318,6 +318,39 @@ export const productVideoCategories = [
         "src": "/assets/product-videos/filming-post/17-vertical-progress-bar-video.mp4",
         "previewSrc": "/assets/product-videos/filming-post/17-vertical-progress-bar-video.mp4",
         "poster": "/assets/product-videos/filming-post/17-vertical-progress-bar-video-poster.jpg"
+      },
+      {
+        "id": "18-e3-light-bulb-camera",
+        "title": "E3 Light Bulb Camera",
+        "category": "Filming & Post-Production",
+        "orientation": "landscape",
+        "sourceSizeMb": 23,
+        "duration": "0:29",
+        "src": "/assets/product-videos/filming-post/18-e3-light-bulb-camera.mp4",
+        "previewSrc": "/assets/product-videos/filming-post/18-e3-light-bulb-camera.mp4",
+        "poster": "/assets/product-videos/filming-post/18-e3-light-bulb-camera-poster.jpg"
+      },
+      {
+        "id": "19-q1-w8b-window-camera",
+        "title": "Q1 W8B Window Camera",
+        "category": "Filming & Post-Production",
+        "orientation": "landscape",
+        "sourceSizeMb": 13.47,
+        "duration": "0:17",
+        "src": "/assets/product-videos/filming-post/19-q1-w8b-window-camera.mp4",
+        "previewSrc": "/assets/product-videos/filming-post/19-q1-w8b-window-camera.mp4",
+        "poster": "/assets/product-videos/filming-post/19-q1-w8b-window-camera-poster.jpg"
+      },
+      {
+        "id": "20-w9b-3mp-indoor-camera",
+        "title": "W9B 3MP Indoor Camera",
+        "category": "Filming & Post-Production",
+        "orientation": "landscape",
+        "sourceSizeMb": 78.64,
+        "duration": "0:39",
+        "src": "/assets/product-videos/filming-post/20-w9b-3mp-indoor-camera.mp4",
+        "previewSrc": "/assets/product-videos/filming-post/20-w9b-3mp-indoor-camera.mp4",
+        "poster": "/assets/product-videos/filming-post/20-w9b-3mp-indoor-camera-poster.jpg"
       }
     ]
   },

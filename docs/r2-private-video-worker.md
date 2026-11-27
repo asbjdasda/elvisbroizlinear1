@@ -13,7 +13,7 @@ The Worker URL is stable per object. It does not generate per-visitor `exp` or `
 
 ## Video delivery preparation gate
 
-Do not upload source MP4 files directly. The repository has an explicit 35-video source manifest in `scripts/product-video-sources.mjs`; it preserves every remaining R2 object key and includes Halloween as the sixth 3D Motion item after the Porsche removal. In particular, do not run `scripts/generate-product-assets.js` for R2 delivery: that generator scans the whole source tree, rebuilds IDs, and can change stable URLs.
+Do not upload source MP4 files directly. The repository has an explicit source manifest in `scripts/product-video-sources.mjs`; it preserves every remaining R2 object key and includes Halloween as the sixth 3D Motion item after the Porsche removal. In particular, do not run `scripts/generate-product-assets.js` for R2 delivery: that generator scans the whole source tree, rebuilds IDs, and can change stable URLs.
 
 From the repository root, prepare and verify the delivery set:
 
