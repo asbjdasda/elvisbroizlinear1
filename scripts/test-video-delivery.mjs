@@ -60,6 +60,7 @@ await assert.rejects(
 const publishedVideos = productVideoCategories.flatMap((category) => category.items)
 const publishedKeys = publishedVideos.map((video) => video.src)
 assert.equal(productVideoCategories.find(({ id }) => id === 'tvc-advertising').items[2]?.id, '03-security-cam-brand-introduction')
+assert.equal(productVideoCategories.find(({ id }) => id === 'ai-video-synthesis').items[2]?.id, '03-indoor-outdoor-camera-dual-axis-pan-tilt')
 const motionGallery = productVideoCategories.find(({ id }) => id === '3d-motion')
 assert.deepEqual(motionGallery.items.slice(6, 11).map(({ id }) => id), [
   '08-e2-light-bulb-camera',
@@ -70,8 +71,8 @@ assert.deepEqual(motionGallery.items.slice(6, 11).map(({ id }) => id), [
 ])
 const mappedKeys = Object.keys(PRODUCT_VIDEO_SOURCES)
 
-assert.equal(publishedKeys.length, 39, 'expected exactly 39 published videos')
-assert.equal(new Set(publishedKeys).size, 39, 'published video keys must be unique')
+assert.equal(publishedKeys.length, 40, 'expected exactly 40 published videos')
+assert.equal(new Set(publishedKeys).size, 40, 'published video keys must be unique')
 assert.deepEqual(
   mappedKeys.toSorted(),
   publishedKeys.toSorted(),
@@ -204,4 +205,4 @@ assert.ok(
   'delivery validation must reject bitrate, codecs, dimensions, and tail moov together',
 )
 
-console.log('Video delivery tests passed (39 published keys and delivery policy).')
+console.log('Video delivery tests passed (40 published keys and delivery policy).')

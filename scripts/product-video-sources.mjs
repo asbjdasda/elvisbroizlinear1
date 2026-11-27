@@ -147,6 +147,10 @@ export const PRODUCT_VIDEO_SOURCES = {
     'AI Video Synthesis',
     'Usay_Swimming Pool.mp4',
   ),
+  '/assets/product-videos/ai-video-synthesis/03-indoor-outdoor-camera-dual-axis-pan-tilt.mp4': source(
+    'AI Video Synthesis',
+    'Indoor&Outdoor Camera with Dual-Axis Endless-Rotation Pan-Tilt Head.mp4',
+  ),
   '/assets/product-videos/motion-graphics/01-animation-showreel.mp4': source(
     'Motion Graphics',
     'The art of creative editing.mp4',

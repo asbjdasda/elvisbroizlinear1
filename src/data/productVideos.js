@@ -347,6 +347,17 @@ export const productVideoCategories = [
         "src": "/assets/product-videos/ai-video-synthesis/02-usay-swimming-pool.mp4",
         "previewSrc": "/assets/product-videos/ai-video-synthesis/02-usay-swimming-pool.mp4",
         "poster": "/assets/product-videos/ai-video-synthesis/02-usay-swimming-pool-poster.jpg"
+      },
+      {
+        "id": "03-indoor-outdoor-camera-dual-axis-pan-tilt",
+        "title": "Indoor&Outdoor Camera with Dual-Axis Endless-Rotation Pan-Tilt Head",
+        "category": "AI Video Synthesis",
+        "orientation": "landscape",
+        "sourceSizeMb": 204.89,
+        "duration": "1:59",
+        "src": "/assets/product-videos/ai-video-synthesis/03-indoor-outdoor-camera-dual-axis-pan-tilt.mp4",
+        "previewSrc": "/assets/product-videos/ai-video-synthesis/03-indoor-outdoor-camera-dual-axis-pan-tilt.mp4",
+        "poster": "/assets/product-videos/ai-video-synthesis/03-indoor-outdoor-camera-dual-axis-pan-tilt-poster.jpg"
       }
     ]
   },
