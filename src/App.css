@@ -6820,3 +6820,9 @@ main {
   .client-map-trigger { grid-template-columns: minmax(0, 1fr) auto; }
   .client-map-number { grid-column: 1 / -1; }
 }
+
+@media (min-width: 641px) {
+  .client-map-body > p {
+    margin-inline-start: calc(var(--service-number-width) + 16px);
+  }
+}
