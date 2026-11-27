@@ -147,7 +147,7 @@ function VideoRail({ category, items, titlePrefix = category?.label || 'Project 
   }
 
   return (
-    <article className={railClass}>
+    <article className={railClass} data-category={category.id}>
       <div className="product-rail__header">
         <div>
           <span>

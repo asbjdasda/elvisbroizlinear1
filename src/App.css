@@ -6826,3 +6826,28 @@ main {
     margin-inline-start: calc(var(--service-number-width) + 16px);
   }
 }
+
+@media (max-width: 600px) {
+  .product-rail[data-category="tvc-advertising"] {
+    grid-template-rows: auto auto auto !important;
+    min-height: 0;
+  }
+
+  .product-rail[data-category="tvc-advertising"] .product-rail__stage {
+    min-height: 0;
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .product-rail[data-category="tvc-advertising"] .product-rail__header {
+    flex-wrap: wrap;
+  }
+
+  .product-rail[data-category="tvc-advertising"] .product-rail__header > div:first-child {
+    flex-basis: 100%;
+  }
+
+  .product-rail[data-category="tvc-advertising"] .product-card__meta {
+    display: none;
+  }
+}
