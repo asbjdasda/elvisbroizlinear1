@@ -1,3 +1,4 @@
+import DotField from './components/DotField'
 import ClientMapPanel from './components/ClientMapPanel'
 import clientMark0 from './assets/client-marks/green-ring.webp'
 import clientMark1 from './assets/client-marks/multicolor-chevron.webp'
@@ -38,6 +39,8 @@ const navItems = [
 ]
 
 const assetPath = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+const HERO_VIDEO_URL =
+  import.meta.env.VITE_HERO_VIDEO_URL || 'https://video.elvisbroizlinear.com/assets/product-videos/hero/hero-window.mp4'
 
 const cinematicGrainientProps = {
   color1: '#dd4c0d',
@@ -562,14 +565,22 @@ function App() {
           <div className="hero__frame">
             <video
               className="hero__video"
-              src={assetPath('/assets/cliff-life.mp4')}
+              poster={assetPath('/assets/hero-window-poster.jpg')}
               autoPlay
               muted
               loop
               playsInline
               preload="metadata"
-              aria-label="Cliff life background video"
-            />
+              aria-label="Brozien hero animation"
+            >
+              <source src={HERO_VIDEO_URL} type="video/mp4" />
+              <source src={assetPath('/assets/hero-preview.mp4')} type="video/mp4" />
+            </video>
+            <div className="hero__dot-field" aria-hidden="true">
+              <DotField gradientFrom="#84cc16" gradientTo="#FF9FFC" dotRadius={0.8}
+                dotSpacing={15} cursorRadius={120} bulgeStrength={0.2} glowRadius={70}
+                gradientAngle={84} glowIntensity={0.25} baseOpacity={0.2} />
+            </div>
             <div className="noise-overlay" />
             <div className="hero__gradient" />
             <div className="hero__slats" aria-hidden="true">

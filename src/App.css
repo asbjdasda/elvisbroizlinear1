@@ -329,8 +329,8 @@ main {
 .hero__video {
   z-index: 0;
   object-fit: cover;
-  opacity: 0.9;
-  filter: saturate(0.72) contrast(1.08) brightness(0.75);
+  opacity: 1;
+  filter: brightness(0.8);
 }
 
 .hero__dot-field {
@@ -5989,9 +5989,7 @@ main {
     linear-gradient(90deg, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.14) 44%, rgba(0, 0, 0, 0.44)) !important;
 }
 
-.hero__dot-field {
-  display: none !important;
-}
+
 
 .product-mode-tabs button,
 .video-category-tabs button,

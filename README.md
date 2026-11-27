@@ -17,6 +17,6 @@ npm run build
 
 ## Assets
 
-- `/public/assets/hero-preview.mp4` - hero background video
+- `/public/assets/hero-preview.mp4` - lightweight fallback for the looping R2 hero video. The background fades in and dims to 80% as the title enters.
 - `/public/assets/brozien-logo.png` - logo / avatar placeholder
 - `/public/assets/project-*.png` - initial project visuals

@@ -7,7 +7,7 @@
 - R2 bucket `elvisbroizlinear`: private; it has no `r2.dev` public URL.
 - Product cards use the small files under `/assets/product-video-previews/`.
 - Full product videos are requested from the Worker only after a visitor opens a video modal.
-- Hero `/assets/cliff-life.mp4` is 3,971,322 bytes and is copied without transcoding.
+- The hero loops the R2 video at `/assets/product-videos/hero/hero-window.mp4`. Pages supplies the first-frame poster and a lightweight MP4 fallback.
 
 The Worker URL is stable per object. It does not generate per-visitor `exp` or `sig` query strings. The Worker cache key is the normalized R2 object key, its current R2 ETag, and the requested byte range. Replacing a file at the same R2 key changes the ETag and bypasses old cached segments automatically.
 

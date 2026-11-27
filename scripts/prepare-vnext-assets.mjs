@@ -13,7 +13,8 @@ const ffmpegPath = ffmpegInstaller.path
 
 const staticAssets = [
   '/assets/brozien-identity-mark.png',
-  '/assets/cliff-life.mp4',
+  '/assets/hero-preview.mp4',
+  '/assets/hero-window-poster.jpg',
   '/assets/logos/samassi.png',
   '/assets/logos/nimo.png',
   '/assets/logos/herdio-logo-new.png',

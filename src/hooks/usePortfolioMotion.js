@@ -21,15 +21,18 @@ function usePortfolioMotion() {
         })
         .fromTo(
           '.hero__video',
-          { scale: 1.08, filter: 'saturate(0.62) contrast(1.04) brightness(0.56)' },
-          { scale: 1, filter: 'saturate(0.72) contrast(1.08) brightness(0.75)', duration: 1.7 },
+          { scale: 1.03, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.65 },
           '<',
         )
+        .addLabel('textEntry', 0.78)
+        .fromTo('.hero__video', { filter: 'brightness(1)' },
+          { filter: 'brightness(0.8)', duration: 1.1, ease: 'power1.inOut' }, 'textEntry')
         .fromTo(
           '.hero__cta-block',
           { yPercent: 26, scaleX: 0.82, transformOrigin: 'left bottom', autoAlpha: 0 },
           { yPercent: 0, scaleX: 1, autoAlpha: 1, duration: 1.35, clearProps: 'visibility,opacity,transform' },
-          '-=0.92',
+          'textEntry',
         )
         .fromTo(
           '.hero__copy h1',

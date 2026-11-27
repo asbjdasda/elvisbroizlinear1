@@ -25,10 +25,10 @@ async function walk(dir) {
 const files = await walk(distRoot)
 const oversizedFiles = []
 
-const heroSource = await stat(join(root, 'public', 'assets', 'cliff-life.mp4'))
-const heroOutput = await stat(join(distRoot, 'assets', 'cliff-life.mp4'))
+const heroSource = await stat(join(root, 'public', 'assets', 'hero-preview.mp4'))
+const heroOutput = await stat(join(distRoot, 'assets', 'hero-preview.mp4'))
 if (heroSource.size !== heroOutput.size) {
-  console.error(`Hero video must be copied without transcoding: source=${heroSource.size}, output=${heroOutput.size}`)
+  console.error(`Hero preview must be copied without transcoding: source=${heroSource.size}, output=${heroOutput.size}`)
   process.exit(1)
 }
 
