@@ -317,7 +317,6 @@ main {
 
 .hero__video,
 .hero__gradient,
-.noise-overlay,
 .hero__slats {
   position: absolute;
   inset: 0;
@@ -336,7 +335,7 @@ main {
 @media (prefers-reduced-motion: no-preference) {
   .hero__video {
     --wave-edge: 150%;
-    --wave-mask: radial-gradient(circle farthest-corner at center,
+    --wave-mask: radial-gradient(circle at center,
       black calc(var(--wave-edge) - 32%),
       rgba(0, 0, 0, .72) calc(var(--wave-edge) - 25%),
       rgba(0, 0, 0, .93) calc(var(--wave-edge) - 19%),
@@ -358,13 +357,6 @@ main {
     linear-gradient(90deg, rgba(0, 0, 0, 0.79), rgba(0, 0, 0, 0.37) 48%, rgba(0, 0, 0, 0.73));
 }
 
-.noise-overlay {
-  z-index: 3;
-  opacity: 0.46;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
-}
 
 .hero__slats {
   z-index: 4;

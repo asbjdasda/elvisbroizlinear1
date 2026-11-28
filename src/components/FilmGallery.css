@@ -1,0 +1,142 @@
+.split-format.film-gallery {
+  display: block;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+}
+
+.film-gallery__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 16px;
+}
+
+.film-gallery__head h3 {
+  margin: 0;
+  font-size: clamp(22px, 3vw, 38px);
+}
+
+.film-gallery__head .split-format__back {
+  margin: 0;
+}
+
+.film-gallery__portraits {
+  height: clamp(400px, 66vh, 620px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.film-gallery__landscape.scroll-stack {
+  height: clamp(265px, 70vh, 720px);
+  scrollbar-width: thin;
+}
+
+.film-gallery__landscape .scroll-stack__inner {
+  max-width: min(100%, 1000px, 106vh);
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding-inline: clamp(8px, 2vw, 24px);
+}
+
+.film-gallery .scroll-stack-card {
+  height: auto;
+  padding: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: clamp(10px, 1.6vw, 24px);
+}
+
+.film-poster, .film-gallery .depth-carousel__card {
+  padding: 0;
+  border: 0;
+  font: inherit;
+  color: white;
+}
+
+.film-poster {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.film-poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.film-poster__caption {
+  position: absolute;
+  inset: auto 0 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 32px 16px 14px;
+  background: linear-gradient(transparent, rgb(0 0 0 / 85%));
+  color: white;
+  text-align: left;
+}
+
+.film-poster__caption strong {
+  font-size: clamp(14px, 1.6vw, 23px);
+  line-height: 1.14;
+  overflow-wrap: anywhere;
+}
+
+.film-poster__caption > span {
+  flex: none;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.shoe-exhibit {
+  margin: 0;
+}
+
+.shoe-exhibit__stage {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: clamp(340px, 62vh, 610px);
+  overflow: hidden;
+  border-radius: 24px;
+  background: radial-gradient(ellipse at 48% 48%, #e2dfd5, #b7b6b0 85%);
+  color: #18191b;
+}
+
+.shoe-exhibit figcaption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  padding: 14px 4px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.shoe-exhibit figcaption a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .film-gallery__portraits {
+    height: clamp(320px, 106vw, 450px);
+  }
+
+  .film-gallery__landscape.scroll-stack {
+    height: clamp(250px, 65vw, 360px);
+  }
+
+  .film-gallery__head {
+    padding: 8px;
+  }
+}

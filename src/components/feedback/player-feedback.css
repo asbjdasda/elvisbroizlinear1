@@ -1,0 +1,32 @@
+.video-player__like[aria-pressed="true"] { color: #ffad70; }
+.video-player__like[aria-pressed="true"] svg { fill: currentColor; }
+@media (prefers-reduced-motion: no-preference) {
+  .video-player__like[aria-pressed="true"] svg {
+    transform-origin: 20% 85%;
+    animation: player-like-pop 560ms cubic-bezier(.22,.73,.22,1);
+  }
+  @keyframes player-like-pop {
+    0% { transform: rotate(0) scale(1); }
+    30% { transform: rotate(-19deg) translateY(-3px) scale(1.35); }
+    65% { transform: rotate(5deg) scale(.94); }
+    100% { transform: rotate(0) scale(1); }
+  }
+}
+.video-modal__panel > .swipe-toast { --st-offset: 16px; }
+.auth-form__status { margin: 0; font-size: .88rem; line-height: 1.45; overflow-wrap: anywhere; }
+.auth-form__status[role="alert"] { color: #ffbba9; }
+.auth-form .code-slots { justify-self: center; }
+.auth-form__submit:disabled { cursor: wait; opacity: .65; }
+.auth-form__switch button:disabled { cursor: default; opacity: .6; }
+.auth-form .auth-form__switch { flex-wrap: wrap; }
+
+@media (max-width: 640px) {
+  .site-header .header-auth {
+    display: inline-flex;
+    position: absolute;
+    left: 4px;
+    top: 58px;
+    gap: 6px;
+  }
+  .site-header .header-auth__button { min-height: 30px; padding: 0 11px; }
+}

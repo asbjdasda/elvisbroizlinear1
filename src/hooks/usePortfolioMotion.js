@@ -19,17 +19,17 @@ function usePortfolioMotion() {
           { '--wave-edge': '135%', opacity: 1, duration: 1.8, ease: 'power1.out',
             onComplete: () => video.classList.remove('is-revealing') },
         )
-        .addLabel('textEntry', 1.1)
+        .addLabel('textEntry', 1.72)
         .fromTo(
           '.hero__cta-block',
           { yPercent: 26, scaleX: 0.82, transformOrigin: 'left bottom', autoAlpha: 0 },
-          { yPercent: 0, scaleX: 1, autoAlpha: 1, duration: 2.2, clearProps: 'visibility,opacity,transform' },
+          { yPercent: 0, scaleX: 1, autoAlpha: 1, duration: 2.55, clearProps: 'visibility,opacity,transform' },
           'textEntry',
         )
         .fromTo(
           '.hero__copy h1',
           { yPercent: 26, scaleX: 0.82, transformOrigin: 'left bottom', autoAlpha: 0 },
-          { yPercent: 0, scaleX: 1, autoAlpha: 1, duration: 2.2, clearProps: 'visibility,opacity,transform' },
+          { yPercent: 0, scaleX: 1, autoAlpha: 1, duration: 2.55, clearProps: 'visibility,opacity,transform' },
           'textEntry+=0.24',
         )
         .fromTo(

@@ -1,9 +1,11 @@
-import { useMemo, useState } from 'react'
+import { lazy, Suspense, useMemo, useState } from 'react'
 import { productModes, productVideoCategories } from '../data/productVideos'
 import SplitFormatRail from './SplitFormatRail'
 import ScrollFloat from './ScrollFloat'
 import VideoModal from './VideoModal'
 import VideoRail from './VideoRail'
+
+const ShoeExhibit = lazy(() => import('./ShoeExhibit'))
 
 const assetPath = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
 const videoMode = productModes.find((item) => item.id === 'video') || productModes[0]
@@ -90,8 +92,8 @@ function ProductSection() {
             ))}
           </div>
 
-          {activeCategory.id === 'filming-post' ? (
-            <SplitFormatRail key={activeCategory.id} category={activeCategory} onOpen={handleOpenVideo} />
+          {['filming-post', 'ai-video-synthesis'].includes(activeCategory.id) ? (
+            <SplitFormatRail key={activeCategory.id} category={activeCategory} onOpen={handleOpenVideo} modalOpen={Boolean(modalItem)} />
           ) : (
             <VideoRail key={activeCategory.id} category={activeCategory} items={activeCategory.items} onOpen={handleOpenVideo} />
           )}
@@ -103,10 +105,16 @@ function ProductSection() {
               <img src={assetPath(productModes.find((item) => item.id === mode)?.icon || videoMode.icon)} alt="" />
             </button>
           </div>
-          <div className="product-placeholder">
-            <span>{mode === '3d' ? '3D' : 'Graphic'}</span>
-            <h3>Updating. Stay tuned......</h3>
-          </div>
+          {mode === '3d' ? (
+            <Suspense fallback={<p role="status">Loading 3D viewer…</p>}>
+              <ShoeExhibit />
+            </Suspense>
+          ) : (
+            <div className="product-placeholder">
+              <span>Graphic</span>
+              <h3>Updating. Stay tuned......</h3>
+            </div>
+          )}
         </>
       ) : (
         <div className="product-mode-tabs product-mode-tabs--directory" aria-label="Project categories">

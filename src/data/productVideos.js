@@ -351,6 +351,66 @@ export const productVideoCategories = [
         "src": "/assets/product-videos/filming-post/20-w9b-3mp-indoor-camera.mp4",
         "previewSrc": "/assets/product-videos/filming-post/20-w9b-3mp-indoor-camera.mp4",
         "poster": "/assets/product-videos/filming-post/20-w9b-3mp-indoor-camera-poster.jpg"
+      },
+      {
+        "id": "21-amazon-introduce-angled-mounting-bracket",
+        "title": "Amazon introduce Angled Mounting Bracket",
+        "category": "Filming & Post-Production",
+        "orientation": "portrait",
+        "sourceSizeMb": 31.31,
+        "duration": "0:27",
+        "src": "/assets/product-videos/filming-post/Portrait/21-amazon-introduce-angled-mounting-bracket.mp4",
+        "poster": "/assets/product-videos/filming-post/Portrait/21-amazon-introduce-angled-mounting-bracket-poster.jpg"
+      },
+      {
+        "id": "22-dog-stealing-socks",
+        "title": "Dog stealing socks",
+        "category": "Filming & Post-Production",
+        "orientation": "portrait",
+        "sourceSizeMb": 30.19,
+        "duration": "0:25",
+        "src": "/assets/product-videos/filming-post/Portrait/22-dog-stealing-socks.mp4",
+        "poster": "/assets/product-videos/filming-post/Portrait/22-dog-stealing-socks-poster.jpg"
+      },
+      {
+        "id": "23-e5-catch-everything-even-in-the-dark",
+        "title": "E5 Catch Everything.Even In The Dark!",
+        "category": "Filming & Post-Production",
+        "orientation": "portrait",
+        "sourceSizeMb": 10.36,
+        "duration": "0:12",
+        "src": "/assets/product-videos/filming-post/Portrait/23-e5-catch-everything-even-in-the-dark.mp4",
+        "poster": "/assets/product-videos/filming-post/Portrait/23-e5-catch-everything-even-in-the-dark-poster.jpg"
+      },
+      {
+        "id": "24-w11-youtube-shorts",
+        "title": "W11 Youtube Shorts",
+        "category": "Filming & Post-Production",
+        "orientation": "portrait",
+        "sourceSizeMb": 32.32,
+        "duration": "0:39",
+        "src": "/assets/product-videos/filming-post/Portrait/24-w11-youtube-shorts.mp4",
+        "poster": "/assets/product-videos/filming-post/Portrait/24-w11-youtube-shorts-poster.jpg"
+      },
+      {
+        "id": "25-w8-night-vision-zoom-amplification",
+        "title": "W8 Night Vision Zoom Amplification",
+        "category": "Filming & Post-Production",
+        "orientation": "portrait",
+        "sourceSizeMb": 31.24,
+        "duration": "0:30",
+        "src": "/assets/product-videos/filming-post/Portrait/25-w8-night-vision-zoom-amplification.mp4",
+        "poster": "/assets/product-videos/filming-post/Portrait/25-w8-night-vision-zoom-amplification-poster.jpg"
+      },
+      {
+        "id": "26-w9c-petmoniting-camera",
+        "title": "W9C Petmoniting Camera",
+        "category": "Filming & Post-Production",
+        "orientation": "portrait",
+        "sourceSizeMb": 31.05,
+        "duration": "0:27",
+        "src": "/assets/product-videos/filming-post/Portrait/26-w9c-petmoniting-camera.mp4",
+        "poster": "/assets/product-videos/filming-post/Portrait/26-w9c-petmoniting-camera-poster.jpg"
       }
     ]
   },
@@ -391,6 +451,146 @@ export const productVideoCategories = [
         "src": "/assets/product-videos/ai-video-synthesis/03-indoor-outdoor-camera-dual-axis-pan-tilt.mp4",
         "previewSrc": "/assets/product-videos/ai-video-synthesis/03-indoor-outdoor-camera-dual-axis-pan-tilt.mp4",
         "poster": "/assets/product-videos/ai-video-synthesis/03-indoor-outdoor-camera-dual-axis-pan-tilt-poster.jpg"
+      },
+      {
+        "id": "04-bf01-c-bamboo-style",
+        "title": "BF01-C-Bamboo style",
+        "category": "AI Video Synthesis",
+        "orientation": "portrait",
+        "sourceSizeMb": 27.39,
+        "duration": "0:24",
+        "src": "/assets/product-videos/ai-video-synthesis/Portrait/04-bf01-c-bamboo-style.mp4",
+        "poster": "/assets/product-videos/ai-video-synthesis/Portrait/04-bf01-c-bamboo-style-poster.jpg"
+      },
+      {
+        "id": "05-e5-ensures-worry-free-travel",
+        "title": "E5 ensures worry-free travel",
+        "category": "AI Video Synthesis",
+        "orientation": "portrait",
+        "sourceSizeMb": 4.17,
+        "duration": "0:15",
+        "src": "/assets/product-videos/ai-video-synthesis/Portrait/05-e5-ensures-worry-free-travel.mp4",
+        "poster": "/assets/product-videos/ai-video-synthesis/Portrait/05-e5-ensures-worry-free-travel-poster.jpg"
+      },
+      {
+        "id": "06-the-e5-indoor-compact-camera-you-really-need-it",
+        "title": "The E5 Indoor compact camera—you really need it.",
+        "category": "AI Video Synthesis",
+        "orientation": "portrait",
+        "sourceSizeMb": 21.45,
+        "duration": "0:15",
+        "src": "/assets/product-videos/ai-video-synthesis/Portrait/06-the-e5-indoor-compact-camera-you-really-need-it.mp4",
+        "poster": "/assets/product-videos/ai-video-synthesis/Portrait/06-the-e5-indoor-compact-camera-you-really-need-it-poster.jpg"
+      },
+      {
+        "id": "07-the-e5-protects-your-garage-at-all-times",
+        "title": "The E5 Protects your garage at all times.",
+        "category": "AI Video Synthesis",
+        "orientation": "portrait",
+        "sourceSizeMb": 21,
+        "duration": "0:15",
+        "src": "/assets/product-videos/ai-video-synthesis/Portrait/07-the-e5-protects-your-garage-at-all-times.mp4",
+        "poster": "/assets/product-videos/ai-video-synthesis/Portrait/07-the-e5-protects-your-garage-at-all-times-poster.jpg"
+      },
+      {
+        "id": "08-w1-fish-tank-camera-en",
+        "title": "W1 Fish Tank Camera EN",
+        "category": "AI Video Synthesis",
+        "orientation": "portrait",
+        "sourceSizeMb": 23.23,
+        "duration": "0:28",
+        "src": "/assets/product-videos/ai-video-synthesis/Portrait/08-w1-fish-tank-camera-en.mp4",
+        "poster": "/assets/product-videos/ai-video-synthesis/Portrait/08-w1-fish-tank-camera-en-poster.jpg"
+      },
+      {
+        "id": "09-w11-hook-burglary",
+        "title": "W11 Hook Burglary",
+        "category": "AI Video Synthesis",
+        "orientation": "portrait",
+        "sourceSizeMb": 32.29,
+        "duration": "0:28",
+        "src": "/assets/product-videos/ai-video-synthesis/Portrait/09-w11-hook-burglary.mp4",
+        "poster": "/assets/product-videos/ai-video-synthesis/Portrait/09-w11-hook-burglary-poster.jpg"
+      },
+      {
+        "id": "10-w11-solar-window-camera",
+        "title": "W11 Solar Window Camera",
+        "category": "AI Video Synthesis",
+        "orientation": "portrait",
+        "sourceSizeMb": 32.45,
+        "duration": "0:30",
+        "src": "/assets/product-videos/ai-video-synthesis/Portrait/10-w11-solar-window-camera.mp4",
+        "poster": "/assets/product-videos/ai-video-synthesis/Portrait/10-w11-solar-window-camera-poster.jpg"
+      },
+      {
+        "id": "11-w11-terrible-things-happen-after-youve-fallen-fast-asleep",
+        "title": "W11 Terrible things happen after you’ve fallen fast asleep.",
+        "category": "AI Video Synthesis",
+        "orientation": "portrait",
+        "sourceSizeMb": 25.02,
+        "duration": "0:30",
+        "src": "/assets/product-videos/ai-video-synthesis/Portrait/11-w11-terrible-things-happen-after-youve-fallen-fast-asleep.mp4",
+        "poster": "/assets/product-videos/ai-video-synthesis/Portrait/11-w11-terrible-things-happen-after-youve-fallen-fast-asleep-poster.jpg"
+      },
+      {
+        "id": "12-w11-tiktok-reels",
+        "title": "W11 TikTok Reels",
+        "category": "AI Video Synthesis",
+        "orientation": "portrait",
+        "sourceSizeMb": 14.05,
+        "duration": "0:16",
+        "src": "/assets/product-videos/ai-video-synthesis/Portrait/12-w11-tiktok-reels.mp4",
+        "poster": "/assets/product-videos/ai-video-synthesis/Portrait/12-w11-tiktok-reels-poster.jpg"
+      },
+      {
+        "id": "13-w11-window-camera-reality",
+        "title": "W11 Window Camera Reality",
+        "category": "AI Video Synthesis",
+        "orientation": "portrait",
+        "sourceSizeMb": 28.57,
+        "duration": "0:26",
+        "src": "/assets/product-videos/ai-video-synthesis/Portrait/13-w11-window-camera-reality.mp4",
+        "poster": "/assets/product-videos/ai-video-synthesis/Portrait/13-w11-window-camera-reality-poster.jpg"
+      },
+      {
+        "id": "14-w8b-what-exactly-is-underneath-the-doormat",
+        "title": "W8B What exactly is underneath the doormat",
+        "category": "AI Video Synthesis",
+        "orientation": "portrait",
+        "sourceSizeMb": 78.97,
+        "duration": "0:38",
+        "src": "/assets/product-videos/ai-video-synthesis/Portrait/14-w8b-what-exactly-is-underneath-the-doormat.mp4",
+        "poster": "/assets/product-videos/ai-video-synthesis/Portrait/14-w8b-what-exactly-is-underneath-the-doormat-poster.jpg"
+      },
+      {
+        "id": "15-w9c-3mp-fishhubt-camera",
+        "title": "W9C 3MP FishHubt Camera",
+        "category": "AI Video Synthesis",
+        "orientation": "portrait",
+        "sourceSizeMb": 34.98,
+        "duration": "0:29",
+        "src": "/assets/product-videos/ai-video-synthesis/Portrait/15-w9c-3mp-fishhubt-camera.mp4",
+        "poster": "/assets/product-videos/ai-video-synthesis/Portrait/15-w9c-3mp-fishhubt-camera-poster.jpg"
+      },
+      {
+        "id": "16-w9c-fishhub-aquarium-camera",
+        "title": "W9C Fishhub&Aquarium Camera",
+        "category": "AI Video Synthesis",
+        "orientation": "portrait",
+        "sourceSizeMb": 30.52,
+        "duration": "0:26",
+        "src": "/assets/product-videos/ai-video-synthesis/Portrait/16-w9c-fishhub-aquarium-camera.mp4",
+        "poster": "/assets/product-videos/ai-video-synthesis/Portrait/16-w9c-fishhub-aquarium-camera-poster.jpg"
+      },
+      {
+        "id": "17-y5q-this-was-apparently-an-emergency",
+        "title": "Y5Q This was apparently an emergency.",
+        "category": "AI Video Synthesis",
+        "orientation": "portrait",
+        "sourceSizeMb": 31.05,
+        "duration": "0:26",
+        "src": "/assets/product-videos/ai-video-synthesis/Portrait/17-y5q-this-was-apparently-an-emergency.mp4",
+        "poster": "/assets/product-videos/ai-video-synthesis/Portrait/17-y5q-this-was-apparently-an-emergency-poster.jpg"
       }
     ]
   },

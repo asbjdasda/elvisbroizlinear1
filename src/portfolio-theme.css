@@ -1,0 +1,72 @@
+.site-header__tools {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 12px;
+  margin-top: 22px;
+}
+.site-header__tools .contact-link { margin-top: 0; }
+.site-header__tools .squish-switch { pointer-events: auto; }
+.squish-switch:focus-visible { outline: 2px solid #ff7649; outline-offset: 4px; border-radius: 20px; }
+
+/* The film, poster captions, and playback controls keep their cinematic palette. */
+html[data-theme='light'] {
+  color-scheme: light;
+  --paper: #f2f2f0;
+  --card: #fbfbfa;
+  --ink: #222426;
+  --secondary: #51565b;
+  --rule: #d0d1cf;
+  --accent-orange: #a13719;
+  --cinema-bg: var(--paper);
+  --cinema-panel: var(--card);
+  --cinema-line: var(--rule);
+  --cinema-copy: var(--secondary);
+}
+[data-theme='light'] body,
+[data-theme='light'] .page-shell,
+[data-theme='light'] .page-shell__backdrop {
+  background: var(--paper) !important;
+}
+[data-theme='light'] .below-hero { color: var(--ink); }
+[data-theme='light'] :is(.profile-section, .services-section, .product-section, .contact-section) {
+  background: transparent !important;
+}
+[data-theme='light'] :is(.profile-section__text, .service-row, .contact-section__panel,
+  .product-rail, .product-placeholder, .split-format, .split-format__choice,
+  .achievement-dashboard, .achievement-dashboard__chart-card, .achievement-dashboard__metrics,
+  .achievement-dashboard__channels, .achievement-channel, .achievement-metric) {
+  background: var(--card) !important;
+  color: var(--ink);
+  border-color: var(--rule) !important;
+}
+[data-theme='light'] :is(.profile-section__heading, .profile-section__slide, .services-section__head,
+  .contact-section__heading, .product-section__head, .achievement-block__heading,
+  .service-row, .contact-section__panel, .product-rail__header, .achievement-dashboard) :is(h1,h2,h3,h4,strong),
+[data-theme='light'] :is(.profile-section__meta strong, .service-row > span, .client-map-trigger,
+  .contact-section__details a, .film-gallery__head h3, .split-format__choice > span) {
+  color: var(--ink) !important;
+}
+[data-theme='light'] :is(.service-row p, .contact-section__panel p, .profile-section__slide p,
+  .profile-section__meta span, .achievement-dashboard p, .achievement-dashboard small,
+  .achievement-dashboard__legend, .achievement-channel, .product-rail__header span) {
+  color: var(--secondary);
+}
+[data-theme='light'] :is(.site-header .header-auth__button, .site-header .contact-link,
+  .nav-guide, .profile-section__arrows button, .product-mode-tabs button, .video-category-tabs button,
+  .split-format__back, .product-rail__actions button, .product-section__badge) {
+  background: var(--card) !important;
+  color: var(--ink);
+  border-color: var(--rule);
+}
+[data-theme='light'] .nav-guide__item { color: var(--secondary); }
+[data-theme='light'] :is(.nav-guide__item, .video-category-tabs button):is(:hover,.is-active) {
+  color: var(--ink); background: #dedfdd !important;
+}
+[data-theme='light'] .product-mode-tabs button img,
+[data-theme='light'] .video-category-tabs__back img,
+[data-theme='light'] .split-format__back img { filter: brightness(.2); }
+
+@media (max-width: 640px) {
+  .site-header__tools { grid-column: 2; grid-row: 2; margin: 8px 4px 0 0; }
+}

@@ -215,6 +215,11 @@ try {
   assert.equal(initialState.pictureInPictureDisabled, true)
   assert.match(initialState.controlsList, /nodownload/)
 
+  await client.evaluate("document.querySelector('.video-player__like').click()")
+  await waitFor(client, "document.querySelector('.video-player__like').getAttribute('aria-pressed') === 'true' && document.querySelector('.swipe-toast')?.textContent.includes('Film liked')")
+  await client.evaluate("document.querySelector('.video-player__like').click()")
+  await waitFor(client, "document.querySelector('.video-player__like').getAttribute('aria-pressed') === 'false' && document.querySelector('.swipe-toast')?.textContent.includes('Like removed')")
+
   const progressLayout = await client.evaluate(`(() => {
     const panel = document.querySelector('.video-modal__panel')
     const player = document.querySelector('.video-player')
@@ -340,6 +345,11 @@ try {
 
   await client.evaluate("document.querySelector('.video-comments__expand-preview button')?.click()")
   await waitFor(client, "document.querySelector('.video-comments__list')?.hidden === false")
+
+  await client.evaluate("document.querySelector('.video-comments__form input').focus()")
+  await client.send('Input.insertText', { text: 'A test comment' })
+  await client.evaluate("document.querySelector('.video-comments__form').requestSubmit()")
+  await waitFor(client, "document.querySelector('.swipe-toast')?.textContent.includes('Comment added') && document.querySelector('.video-comments__list')?.textContent.includes('A test comment')")
 
   await client.evaluate("document.querySelector('.video-popover__close').click()")
   await client.evaluate("document.querySelector('[aria-label=\"More video actions\"]').click()")

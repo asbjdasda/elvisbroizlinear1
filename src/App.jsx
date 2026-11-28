@@ -1,3 +1,5 @@
+import AuthModal from './components/feedback/AuthModal'
+import { emailAuth } from './components/feedback/emailAuth'
 import ClientMapPanel from './components/ClientMapPanel'
 import clientMark0 from './assets/client-marks/green-ring.webp'
 import clientMark1 from './assets/client-marks/multicolor-chevron.webp'
@@ -17,10 +19,12 @@ import clientMark14 from './assets/client-marks/lingxing.webp'
 import clientMark15 from './assets/client-marks/iridescent-orb.webp'
 import clientMark16 from './assets/client-marks/arch.webp'
 import clientMark17 from './assets/client-marks/round-face.webp'
-import { ArrowLeft, ArrowRight, Eye, EyeOff, Mail, Phone, X } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Mail, Phone } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import './App.css'
 import './video-modal-final.css'
+import './portfolio-theme.css'
+import SquishSwitch from './components/SquishSwitch'
 import AchievementDashboard from './components/AchievementDashboard'
 import BorderGlow from './BorderGlow'
 import Grainient from './Grainient'
@@ -408,116 +412,27 @@ function ContactSection() {
   )
 }
 
-function AuthModal({ mode, onClose, onSwitch }) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [showPassword, setShowPassword] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
-  const isSignup = mode === 'signup'
-  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-  const passwordValid = password.length >= 6
-  const showErrors = submitted
-
-  function handleSubmit(event) {
-    event.preventDefault()
-    setSubmitted(true)
-  }
-
-  useEffect(() => {
-    if (!mode) return undefined
-
-    const previousBodyOverflow = document.body.style.overflow
-    const previousHtmlOverflow = document.documentElement.style.overflow
-    document.body.style.overflow = 'hidden'
-    document.documentElement.style.overflow = 'hidden'
-
-    function handleKeyDown(event) {
-      if (event.key === 'Escape') {
-        onClose()
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => {
-      document.body.style.overflow = previousBodyOverflow
-      document.documentElement.style.overflow = previousHtmlOverflow
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [mode, onClose])
-
-  if (!mode) return null
-
-  return (
-    <div className="auth-modal" role="dialog" aria-modal="true" aria-label={isSignup ? 'Sign Up' : 'Log in'}>
-      <button className="auth-modal__backdrop" type="button" aria-label="Close authentication modal" onClick={onClose} />
-      <div className="auth-modal__panel motion-card">
-        <button className="auth-modal__close" type="button" aria-label="Close authentication modal" onClick={onClose}>
-          <X size={18} />
-        </button>
-        <div className="auth-modal__brand">
-          <img src={assetPath('/assets/brozien-identity-mark.png')} alt="" />
-          <span>Brozien</span>
-        </div>
-        <form className="auth-form" onSubmit={handleSubmit} noValidate>
-          <div className="auth-form__head">
-            <span>{isSignup ? 'Create access' : 'Welcome back'}</span>
-            <h2>{isSignup ? 'Sign Up' : 'Log in'}</h2>
-          </div>
-
-          <label className="auth-field">
-            <span>E-mail</span>
-            <input
-              type="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              placeholder="name@example.com"
-              autoComplete="email"
-              aria-invalid={showErrors && !emailValid}
-            />
-            {showErrors && !emailValid ? <small>Please enter a valid e-mail address.</small> : null}
-          </label>
-
-          <label className="auth-field">
-            <span>Password</span>
-            <div className="auth-field__password">
-              <input
-                type={showPassword ? 'text' : 'password'}
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                placeholder="At least 6 characters"
-                autoComplete={isSignup ? 'new-password' : 'current-password'}
-                aria-invalid={showErrors && !passwordValid}
-              />
-              <button type="button" onClick={() => setShowPassword((visible) => !visible)} aria-label="Toggle password visibility">
-                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-              </button>
-            </div>
-            {showErrors && !passwordValid ? <small>Password must be at least 6 characters.</small> : null}
-          </label>
-
-          <button className="auth-form__submit" type="submit">
-            {isSignup ? 'Sign Up' : 'Log in'}
-          </button>
-
-          {showErrors && emailValid && passwordValid ? (
-            <p className="auth-form__success">{isSignup ? 'Sign up form is ready.' : 'Login form is ready.'}</p>
-          ) : null}
-
-          <p className="auth-form__switch">
-            {isSignup ? 'Already have an account?' : "Don't have an account?"}
-            <button type="button" onClick={() => onSwitch(isSignup ? 'login' : 'signup')}>
-              {isSignup ? 'Log in' : 'Sign up'}
-            </button>
-          </p>
-        </form>
-      </div>
-    </div>
-  )
-}
-
 function App() {
+  const [lightTheme, setLightTheme] = useState(() => document.documentElement.dataset.theme === 'light')
+  function changeTheme(light) {
+    setLightTheme(light)
+    const theme = light ? 'light' : 'dark'
+    document.documentElement.dataset.theme = theme
+    try { localStorage.setItem('brozien-theme', theme) } catch { /* Storage may be unavailable. */ }
+  }
   const [activeSection, setActiveSection] = useState('')
   const [authMode, setAuthMode] = useState(null)
+  const [signedIn, setSignedIn] = useState(false)
+  const [signOutError, setSignOutError] = useState('')
+  useEffect(() => {
+    if (!emailAuth) return
+    const { data } = emailAuth.onAuthStateChange((_event, session) => setSignedIn(Boolean(session)))
+    return () => data.subscription.unsubscribe()
+  }, [])
+  async function signOut() {
+    const { error } = await emailAuth.signOut({ scope: 'local' })
+    setSignOutError(error ? 'Could not sign out. Please try again.' : '')
+  }
   const [opening, setOpening] = useState(true)
   usePortfolioMotion()
 
@@ -535,7 +450,7 @@ function App() {
     <div className="page-shell">
       {opening && <Loader className="app-loader" label="Opening portfolio" />}
       <div className="page-shell__backdrop" aria-hidden="true">
-        <Grainient className="page-shell__grainient" {...cinematicGrainientProps} />
+        {!lightTheme && <Grainient className="page-shell__grainient" {...cinematicGrainientProps} />}
       </div>
       {authMode ? <AuthModal key={authMode} mode={authMode} onClose={() => setAuthMode(null)} onSwitch={setAuthMode} /> : null}
       <header className="site-header">
@@ -544,19 +459,27 @@ function App() {
             <img src={assetPath('/assets/brozien-identity-mark.png')} alt="" />
           </a>
           <div className="header-auth" aria-label="Authentication actions">
-            <button className="header-auth__button header-auth__button--secondary" type="button" onClick={() => setAuthMode('login')}>
-              Log in
-            </button>
-            <button className="header-auth__button header-auth__button--primary" type="button" onClick={() => setAuthMode('signup')}>
-              Sign Up
-            </button>
+            {signedIn ? (
+              <button className="header-auth__button header-auth__button--secondary" type="button" onClick={signOut}>Log out</button>
+            ) : (
+              <>
+                <button className="header-auth__button header-auth__button--secondary" type="button" onClick={() => setAuthMode('login')}>Log in</button>
+                <button className="header-auth__button header-auth__button--primary" type="button" onClick={() => setAuthMode('signup')}>Sign Up</button>
+              </>
+            )}
+            {signOutError && <span role="alert">{signOutError}</span>}
           </div>
         </div>
         <NavGuide activeSection={activeSection} onSelect={handleNavSelect} />
+        <div className="site-header__tools">
+        <SquishSwitch checked={lightTheme} onChange={changeTheme} ariaLabel="Light mode"
+          trackColor="#39393e" trackOnColor="#d9dadc" thumbColor="#f8f8f6" thumbOnColor="#333439"
+          width={48} height={27} />
         <button className="contact-link" type="button" onClick={() => handleNavSelect('contact')}>
           <Mail size={16} />
           Contact
         </button>
+        </div>
       </header>
 
       <main>
@@ -575,7 +498,6 @@ function App() {
               <source src={HERO_VIDEO_URL} type="video/mp4" />
               <source src={assetPath('/assets/hero-preview.mp4')} type="video/mp4" />
             </video>
-            <div className="noise-overlay" />
             <div className="hero__gradient" />
             <div className="hero__slats" aria-hidden="true">
               <span />

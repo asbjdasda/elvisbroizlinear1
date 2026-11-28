@@ -177,6 +177,9 @@ for (const item of items) {
     width: 720,
   })
 
+  // Poster-only gallery cards have no preview video to publish.
+  if (!item.previewSrc) continue
+
   const previewAssetPath = item.src.replace('/assets/product-videos/', '/assets/product-video-previews/')
   const previewSource = existsSync(sourcePath(previewAssetPath)) ? sourcePath(previewAssetPath) : sourcePath(item.src)
   await transcodeVideo({

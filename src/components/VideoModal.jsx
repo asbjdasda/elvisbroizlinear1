@@ -9,6 +9,7 @@
   Play,
   Send,
   Share2,
+  ThumbsUp,
   Volume2,
   VolumeX,
   X,
@@ -17,6 +18,8 @@ import gsap from 'gsap'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import Loader from './Loader'
+import SwipeToast from './feedback/SwipeToast'
+import './feedback/player-feedback.css'
 import { mediaPath, productVideoPath } from '../utils/mediaPaths'
 import {
   buildVideoShareUrl,
@@ -67,8 +70,9 @@ function readComments(storageKey) {
 function writeComments(storageKey, comments) {
   try {
     window.localStorage.setItem(storageKey, JSON.stringify(trimComments(comments, 18)))
+    return true
   } catch {
-    // localStorage can be unavailable in private or embedded browsers.
+    return false
   }
 }
 
@@ -93,6 +97,27 @@ function VideoModalContent({ item, onClose }) {
   const controlsRef = useRef(null)
   const controlsHideTimerRef = useRef(null)
   const storageKey = `brozien-comments:${item.id}`
+  const likeKey = `brozien-like:${item.id}`
+  const [liked, setLiked] = useState(() => {
+    try { return window.localStorage.getItem(likeKey) === '1' } catch { return false }
+  })
+  const [notice, setNotice] = useState(null)
+  function notify(title, description = '', icon) {
+    setNotice(current => ({ id: (current?.id ?? 0) + 1, title, description, icon }))
+  }
+  function toggleLike() {
+    const next = !liked
+    setLiked(next)
+    let description = 'Saved on this device.'
+    try {
+      if (next) window.localStorage.setItem(likeKey, '1')
+      else window.localStorage.removeItem(likeKey)
+    } catch {
+      description = 'Available for this viewing session.'
+    }
+    notify(next ? 'Film liked' : 'Like removed', description, <ThumbsUp size={17} />)
+    revealControls(2500)
+  }
   const [loadedSrc, setLoadedSrc] = useState(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [controlsVisible, setControlsVisible] = useState(true)
@@ -383,7 +408,9 @@ function VideoModalContent({ item, onClose }) {
     ].slice(0, 18)
 
     setComments(nextComments)
-    writeComments(storageKey, nextComments)
+    const saved = writeComments(storageKey, nextComments)
+    setCommentsExpanded(true)
+    notify('Comment added', saved ? 'Saved on this device.' : 'Available for this viewing session.', <MessageCircle size={17} />)
     setCommentDraft('')
   }
 
@@ -391,6 +418,7 @@ function VideoModalContent({ item, onClose }) {
     <div className="video-modal" role="dialog" aria-modal="true" aria-label={`${cleanTitle(item)} demo`}>
       <button className="video-modal__backdrop" type="button" aria-label="Close video backdrop" onClick={onClose} />
       <div ref={panelRef} className={`video-modal__panel video-modal__panel--${item.orientation}${isFullscreen ? ' is-fullscreen' : ''}`}>
+        {notice && <SwipeToast key={notice.id} title={notice.title} description={notice.description} icon={notice.icon} onClose={() => setNotice(null)} closeButton />}
         <div className="video-modal__topbar">
           <div>
             <span>{item.category}</span>
@@ -490,6 +518,9 @@ function VideoModalContent({ item, onClose }) {
               <Maximize2 size={18} />
             </button>
 
+            <button className="video-player__button video-player__like" type="button" aria-label="Like film" aria-pressed={liked} onClick={toggleLike}>
+              <ThumbsUp size={18} />
+            </button>
             <div className="video-player__more">
               <button
                 className="video-player__button"

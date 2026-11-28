@@ -202,4 +202,104 @@ export const PRODUCT_VIDEO_SOURCES = {
     'TVC',
     'Security-Cam-Brand-Introduction.mp4',
   ),
+  '/assets/product-videos/ai-video-synthesis/Portrait/04-bf01-c-bamboo-style.mp4': source(
+    'AI Video Synthesis',
+    'Portrait',
+    'BF01-C-Bamboo style.mp4',
+  ),
+  '/assets/product-videos/ai-video-synthesis/Portrait/05-e5-ensures-worry-free-travel.mp4': source(
+    'AI Video Synthesis',
+    'Portrait',
+    'E5 ensures worry-free travel.mp4',
+  ),
+  '/assets/product-videos/ai-video-synthesis/Portrait/06-the-e5-indoor-compact-camera-you-really-need-it.mp4': source(
+    'AI Video Synthesis',
+    'Portrait',
+    'The E5 Indoor compact camera—you really need it..mp4',
+  ),
+  '/assets/product-videos/ai-video-synthesis/Portrait/07-the-e5-protects-your-garage-at-all-times.mp4': source(
+    'AI Video Synthesis',
+    'Portrait',
+    'The E5 Protects your garage at all times..mp4',
+  ),
+  '/assets/product-videos/ai-video-synthesis/Portrait/08-w1-fish-tank-camera-en.mp4': source(
+    'AI Video Synthesis',
+    'Portrait',
+    'W1 Fish Tank Camera EN.mp4',
+  ),
+  '/assets/product-videos/ai-video-synthesis/Portrait/09-w11-hook-burglary.mp4': source(
+    'AI Video Synthesis',
+    'Portrait',
+    'W11 Hook Burglary.mp4',
+  ),
+  '/assets/product-videos/ai-video-synthesis/Portrait/10-w11-solar-window-camera.mp4': source(
+    'AI Video Synthesis',
+    'Portrait',
+    'W11 Solar Window Camera.mp4',
+  ),
+  '/assets/product-videos/ai-video-synthesis/Portrait/11-w11-terrible-things-happen-after-youve-fallen-fast-asleep.mp4': source(
+    'AI Video Synthesis',
+    'Portrait',
+    'W11 Terrible things happen after you’ve fallen fast asleep. .mp4',
+  ),
+  '/assets/product-videos/ai-video-synthesis/Portrait/12-w11-tiktok-reels.mp4': source(
+    'AI Video Synthesis',
+    'Portrait',
+    'W11 TikTok Reels.mp4',
+  ),
+  '/assets/product-videos/ai-video-synthesis/Portrait/13-w11-window-camera-reality.mp4': source(
+    'AI Video Synthesis',
+    'Portrait',
+    'W11 Window Camera Reality.mp4',
+  ),
+  '/assets/product-videos/ai-video-synthesis/Portrait/14-w8b-what-exactly-is-underneath-the-doormat.mp4': source(
+    'AI Video Synthesis',
+    'Portrait',
+    'W8B What exactly is underneath the doormat.mp4',
+  ),
+  '/assets/product-videos/ai-video-synthesis/Portrait/15-w9c-3mp-fishhubt-camera.mp4': source(
+    'AI Video Synthesis',
+    'Portrait',
+    'W9C 3MP FishHubt Camera.mp4',
+  ),
+  '/assets/product-videos/ai-video-synthesis/Portrait/16-w9c-fishhub-aquarium-camera.mp4': source(
+    'AI Video Synthesis',
+    'Portrait',
+    'W9C Fishhub&Aquarium Camera.mp4',
+  ),
+  '/assets/product-videos/ai-video-synthesis/Portrait/17-y5q-this-was-apparently-an-emergency.mp4': source(
+    'AI Video Synthesis',
+    'Portrait',
+    'Y5Q This was apparently an emergency..mp4',
+  ),
+  '/assets/product-videos/filming-post/Portrait/21-amazon-introduce-angled-mounting-bracket.mp4': source(
+    'Filming & Post-Production',
+    'Portrait',
+    'Amazon introduce Angled Mounting Bracket.mp4',
+  ),
+  '/assets/product-videos/filming-post/Portrait/22-dog-stealing-socks.mp4': source(
+    'Filming & Post-Production',
+    'Portrait',
+    'Dog stealing socks.mp4',
+  ),
+  '/assets/product-videos/filming-post/Portrait/23-e5-catch-everything-even-in-the-dark.mp4': source(
+    'Filming & Post-Production',
+    'Portrait',
+    'E5 Catch Everything.Even In The Dark!.mp4',
+  ),
+  '/assets/product-videos/filming-post/Portrait/24-w11-youtube-shorts.mp4': source(
+    'Filming & Post-Production',
+    'Portrait',
+    'W11 Youtube Shorts.mp4',
+  ),
+  '/assets/product-videos/filming-post/Portrait/25-w8-night-vision-zoom-amplification.mp4': source(
+    'Filming & Post-Production',
+    'Portrait',
+    'W8 Night Vision Zoom Amplification.mp4',
+  ),
+  '/assets/product-videos/filming-post/Portrait/26-w9c-petmoniting-camera.mp4': source(
+    'Filming & Post-Production',
+    'Portrait',
+    'W9C Petmoniting Camera.mp4',
+  ),
 }

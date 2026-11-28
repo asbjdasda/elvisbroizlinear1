@@ -76,10 +76,22 @@ assert.deepEqual(filmingLandscape.slice(-3).map(({ id }) => id), [
   '19-q1-w8b-window-camera',
   '20-w9b-3mp-indoor-camera',
 ])
+const aiPortrait = productVideoCategories.find(({ id }) => id === 'ai-video-synthesis').items
+  .filter(({ orientation }) => orientation === 'portrait')
+assert.equal(aiPortrait.length, 14, 'all 14 AI portrait films should be available')
+const filmingPortrait = productVideoCategories.find(({ id }) => id === 'filming-post').items
+  .filter(({ orientation }) => orientation === 'portrait')
+assert.equal(filmingPortrait.length, 16, 'filming includes six new portrait works')
+for (const item of [...aiPortrait, ...filmingPortrait.slice(-6)]) {
+  assert.ok(item.src.includes('/Portrait/'), 'new portrait media belongs in the Portrait directory')
+  assert.ok(existsSync(path.join('public', item.poster)), 'every portrait needs its own still cover')
+  assert.equal(item.title, path.parse(PRODUCT_VIDEO_SOURCES[item.src]).name.trimEnd())
+}
+
 const mappedKeys = Object.keys(PRODUCT_VIDEO_SOURCES)
 
-assert.equal(publishedKeys.length, 43, 'expected exactly 43 published videos')
-assert.equal(new Set(publishedKeys).size, 43, 'published video keys must be unique')
+assert.equal(publishedKeys.length, 63, 'expected exactly 63 published videos')
+assert.equal(new Set(publishedKeys).size, 63, 'published video keys must be unique')
 assert.deepEqual(
   mappedKeys.toSorted(),
   publishedKeys.toSorted(),
@@ -212,4 +224,4 @@ assert.ok(
   'delivery validation must reject bitrate, codecs, dimensions, and tail moov together',
 )
 
-console.log('Video delivery tests passed (43 published keys and delivery policy).')
+console.log('Video delivery tests passed (63 published keys and delivery policy).')
