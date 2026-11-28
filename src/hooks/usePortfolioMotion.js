@@ -21,16 +21,28 @@ function usePortfolioMotion() {
         )
         .addLabel('textEntry', 1.72)
         .fromTo(
-          '.hero__cta-block',
+          '.hero__intro-title span',
           { yPercent: 26, scaleX: 0.82, transformOrigin: 'left bottom', autoAlpha: 0 },
-          { yPercent: 0, scaleX: 1, autoAlpha: 1, duration: 2.55, clearProps: 'visibility,opacity,transform' },
+          { yPercent: 0, scaleX: 1, autoAlpha: 1, duration: 1.3, clearProps: 'visibility,opacity,transform' },
           'textEntry',
+        )
+        .fromTo(
+          '.hero__intro-title strong',
+          { yPercent: 26, scaleX: 0.82, transformOrigin: 'left bottom', autoAlpha: 0 },
+          { yPercent: 0, scaleX: 1, autoAlpha: 1, duration: 1.5, clearProps: 'visibility,opacity,transform' },
+          'textEntry+=0.16',
+        )
+        .fromTo(
+          '.hero__intro-title em',
+          { yPercent: 26, scaleX: 0.82, transformOrigin: 'left bottom', autoAlpha: 0 },
+          { yPercent: 0, scaleX: 1, autoAlpha: 1, duration: 1.3, clearProps: 'visibility,opacity,transform' },
+          'textEntry+=0.34',
         )
         .fromTo(
           '.hero__copy h1',
           { yPercent: 26, scaleX: 0.82, transformOrigin: 'left bottom', autoAlpha: 0 },
           { yPercent: 0, scaleX: 1, autoAlpha: 1, duration: 2.55, clearProps: 'visibility,opacity,transform' },
-          'textEntry+=0.24',
+          'textEntry+=0.72',
         )
         .fromTo(
           ['.hero__join-glow', '.hero__brand-marquee'],

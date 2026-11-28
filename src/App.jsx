@@ -515,7 +515,7 @@ function App() {
             </div>
 
             <div className="hero__cta-block">
-              <div className="hero__portfolio-title" aria-label="An animation portfolio of Brozien">
+              <div className="hero__portfolio-title hero__intro-title" aria-label="An animation portfolio of Brozien">
                 <span>An animation</span>
                 <strong>PORTFOLIO</strong>
                 <em>of</em>
