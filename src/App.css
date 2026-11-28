@@ -358,6 +358,14 @@ main {
 }
 
 
+.hero__frame > .hero__particles {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
 .hero__slats {
   z-index: 4;
   pointer-events: none;

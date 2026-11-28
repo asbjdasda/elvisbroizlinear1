@@ -24,6 +24,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import './App.css'
 import './video-modal-final.css'
 import './portfolio-theme.css'
+import Particles from './components/Particles'
 import SquishSwitch from './components/SquishSwitch'
 import AchievementDashboard from './components/AchievementDashboard'
 import BorderGlow from './BorderGlow'
@@ -498,6 +499,9 @@ function App() {
               <source src={HERO_VIDEO_URL} type="video/mp4" />
               <source src={assetPath('/assets/hero-preview.mp4')} type="video/mp4" />
             </video>
+            <Particles className="hero__particles" particleCount={200} particleSpread={10}
+              speed={0.1} particleBaseSize={50} glow={0.5} twinkle={0.3}
+              moveParticlesOnHover hoverEffect="parallax" depthOfField={0.8} opacity={0.4} />
             <div className="hero__gradient" />
             <div className="hero__slats" aria-hidden="true">
               <span />
