@@ -1,0 +1,32 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "elvisbroizlinear-auth-gateway",
+  "main": "./auth-gateway.js",
+  "compatibility_date": "2026-11-28",
+  "workers_dev": false,
+  "routes": [
+    {
+      "pattern": "auth.elvisbroizlinear.com",
+      "custom_domain": true
+    }
+  ],
+  "vars": {
+    "ALLOWED_ORIGINS": "https://elvisbroizlinear.com,https://www.elvisbroizlinear.com,https://elvisbroizlinear1.pages.dev",
+    "SENDER_EMAIL": "noreply@elvisbroizlinear.com"
+  },
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "allowed_destination_addresses": [
+        "3759442852@qq.com",
+        "claucherty.reichling@gmail.com"
+      ]
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "AUTH_CODES",
+      "id": "eb93fe4271e34f86afcbac9896ac26bf"
+    }
+  ]
+}

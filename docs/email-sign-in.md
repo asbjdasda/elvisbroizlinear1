@@ -1,11 +1,11 @@
 # Email sign-in
 
-The portfolio uses Supabase Auth for passwordless sign-in and registration. The code entry, resend, verification, sessions and sign-out work on each of the site's deployment domains.
+The portfolio uses the Cloudflare auth Worker at `https://auth.elvisbroizlinear.com` for passwordless sign-in and registration. The Worker sends six-digit codes through Cloudflare Email Sending and stores only a short-lived hash in KV.
 
-1. In Supabase Auth, enable Email and new registrations. Set the email OTP length to six digits and configure an expiry and send rate limits.
-2. Configure a production SMTP sender on a verified domain. The default Supabase SMTP service restricts delivery to project team addresses.
-3. In the **Magic Link** and **Confirm signup** email templates, include the six-digit token using `{{ .Token }}`.
-4. Set `VITE_SUPABASE_URL` (the HTTPS project URL) and `VITE_SUPABASE_PUBLISHABLE_KEY` (the public browser key) in the production build environment, then rebuild and deploy the same bundle to each site. The private service role key and SMTP password belong only in the provider.
-5. Request a code from Sign Up for a new visitor or Log in for an existing visitor. Open the delivered email and enter its code on the requesting site. Reload to verify the session, then log out. Sessions are scoped to each site origin.
+1. Keep Email Sending enabled for `elvisbroizlinear.com`, with SPF, DKIM and DMARC records published.
+2. Keep the destination address verified in Cloudflare Email Routing for free-plan test delivery.
+3. Deploy `workers/wrangler.auth-gateway.jsonc` with a private `CODE_SECRET` and the `AUTH_CODES` KV namespace.
+4. Request a code from Sign Up or Log in. Open the delivered email and enter the six-digit code on the requesting site. A successful code is single-use and expires after ten minutes.
+5. The site stores only a short-lived local session marker in the browser. Likes and comments use per-film local storage on the current device.
 
-If the two public settings are absent, the form reports that email sign-in is temporarily unavailable. Likes and comments use per-film local storage on the current device.
+If the auth Worker is unavailable, the form reports the delivery error and does not claim that a message was sent.
